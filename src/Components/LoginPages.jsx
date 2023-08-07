@@ -2,11 +2,11 @@ import { useState } from "react";
 import LoginForm from "./LoginForm";
 
 function LoginPage() {
-  const [userName, setUserName] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <>
-      <LoginForm userName={userName} setUserName={setUserName} />
+      <LoginForm userName={inputValue} setUserName={setInputValue} />
     </>
   );
 }

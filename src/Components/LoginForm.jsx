@@ -1,23 +1,24 @@
 export default function LoginForm({ userName, setUserName }) {
-  const nameSubmit = (event) => {
+  //State
+
+  //Comportement
+  const handleSubmit = (event) => {
     event.preventDefault();
+    alert(`Bonjour ${userName}`);
     setUserName("");
   };
   const nameAdd = (event) => {
     setUserName(event.target.value);
   };
-  const nameUser = () => {
-    if (userName !== "") {
-      alert("Bonjour " + userName);
-    }
-  };
 
+  //Affichage (Render)
   return (
     <>
       <h1>Bienvenue chez nous !</h1>
-      <h3>Connectez vous</h3>
+      <br />
+      <h2>Connectez vous</h2>
 
-      <form action="submit" onSubmit={nameSubmit}>
+      <form action="submit" onSubmit={handleSubmit}>
         <input
           required
           type="text"
@@ -25,7 +26,7 @@ export default function LoginForm({ userName, setUserName }) {
           onChange={nameAdd}
           value={userName}
         />
-        <button onClick={nameUser}>Acceder à votre espace</button>
+        <button>Acceder à votre espace</button>
       </form>
     </>
   );
