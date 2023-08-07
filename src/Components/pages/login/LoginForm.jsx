@@ -1,14 +1,17 @@
-export default function LoginForm({ userName, setUserName }) {
+import { useState } from "react";
+
+export default function LoginForm() {
   //State
+  const [inputValue, setInputValue] = useState("");
 
   //Comportement
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`Bonjour ${userName}`);
-    setUserName("");
+    alert(`Bonjour ${inputValue}`);
+    setInputValue("");
   };
   const nameAdd = (event) => {
-    setUserName(event.target.value);
+    setInputValue(event.target.value);
   };
 
   //Affichage (Render)
@@ -24,7 +27,7 @@ export default function LoginForm({ userName, setUserName }) {
           type="text"
           placeholder="Entrez votre prénom..."
           onChange={nameAdd}
-          value={userName}
+          value={inputValue}
         />
         <button>Acceder à votre espace</button>
       </form>
