@@ -1,11 +1,12 @@
 import LoginForm from "./LoginForm";
 import { styled } from "styled-components";
 import BurgerBackground from "../../../assets/images/burger-background.jpg";
+import Logo from "../../reusable-ui/Logo";
 
 function LoginPage() {
   return (
     <LoginPageStyled>
-      <div className="logo">Logo Crazee Burger</div>
+      <Logo />
       <LoginForm />
     </LoginPageStyled>
   );
@@ -24,8 +25,4 @@ const LoginPageStyled = styled.div`
 
   background: url(${BurgerBackground}) rgba(0, 0, 0, 0.6) fixed center/cover;
   background-blend-mode: darken;
-
-  .logo {
-    background: green;
-  }
 `;
