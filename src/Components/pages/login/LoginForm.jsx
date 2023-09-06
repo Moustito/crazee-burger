@@ -2,7 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { theme } from "../../../theme/index";
+import TextInput from "../../reusable-ui/TextInput";
 import { BsPersonCircle } from "react-icons/bs";
+import { IoChevronForward } from "react-icons/io5";
 
 export default function LoginForm() {
   //State
@@ -15,7 +17,7 @@ export default function LoginForm() {
     setInputValue("");
     navigate(`order/${inputValue}`);
   };
-  const nameAdd = (event) => {
+  const handleChange = (event) => {
     setInputValue(event.target.value);
   };
 
@@ -26,17 +28,17 @@ export default function LoginForm() {
       <hr />
       <h2>Connectez-vous</h2>
       <div>
-        <div className="input-with-icon">
-          <BsPersonCircle className="icon" />
-          <input
-            required
-            type="text"
-            placeholder="Entrez votre prénom..."
-            onChange={nameAdd}
-            value={inputValue}
-          />
-        </div>
-        <button>Accéder à mon espace &gt;</button>
+        <TextInput
+          onChange={handleChange}
+          value={inputValue}
+          placeholder={"Entrez votre prénom"}
+          required
+          Icon={<BsPersonCircle className="icon" />}
+        />
+        <button>
+          <span>Accéder à mon espace</span>
+          <IoChevronForward className="icon" />
+        </button>
       </div>
     </LoginFormStyled>
   );
@@ -65,31 +67,6 @@ const LoginFormStyled = styled.form`
     font-weight: ${theme.weights.bold};
     margin: 20px 10px 10px;
     font-size: 36px;
-  }
-  .input-with-icon {
-    background-color: ${theme.colors.white};
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    padding: 18px 24px;
-    margin: 18px 0;
-    
-    .icon {
-      font-size: 15px;
-      margin-right: 8px;
-      color: ${theme.colors.greySemiDark};
-    }
-    
-    input {
-      border: none;
-      font-size: 15px;
-      color: ${theme.colors.dark};
-    }
-
-    &::placeholder {
-      background: white;
-      color: lightgrey;
-    }
   }
 
   button {
