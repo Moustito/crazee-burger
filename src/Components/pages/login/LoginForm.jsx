@@ -43,8 +43,6 @@ export default function LoginForm() {
 }
 
 const LoginFormStyled = styled.form`
-  background-color: green;
-
   text-align: center;
   max-width: 500px;
   min-height: 400px;
