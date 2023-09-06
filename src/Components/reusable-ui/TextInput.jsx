@@ -16,7 +16,7 @@ export default function TextInput({onChange, value, Icon, ...extraProps}) {
 }
 
 const TextInputStyled = styled.div`
-    background-color: #fff;
+  background-color: ${theme.colors.white};
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
