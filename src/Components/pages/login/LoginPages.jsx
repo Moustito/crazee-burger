@@ -6,7 +6,7 @@ import Logo from "../../reusable-ui/Logo";
 function LoginPage() {
   return (
     <LoginPageStyled>
-      <Logo />
+      <Logo $scale />
       <LoginForm />
     </LoginPageStyled>
   );

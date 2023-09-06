@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import logo from "../../assets/images/logo-orange.png";
-import {theme} from '../../theme/index'
+import { theme } from "../../theme/index";
 
 export default function Logo() {
   return (
@@ -8,26 +8,32 @@ export default function Logo() {
       <h1>Crazee</h1>
       <img src={logo} alt="Crazee Burger Logo" />
       <h1>Burger</h1>
-      </LogoStyled>
-  )
+    </LogoStyled>
+  );
 }
 
 const LogoStyled = styled.div`
   display: flex;
   align-items: center;
+  transform: scale(${(props) => (props.$scale ? 2.5 : 1)});
 
   h1 {
+    display: inline;
+    text-align: center;
     color: ${theme.colors.primary};
-    font-family: 'Amatic SC', cursive;
+    font-size: ${theme.fonts.size.P4};
+    line-height: 1em;
     font-weight: ${theme.fonts.weights.bold};
-    font-size: 110px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
+    font-family: "Amatic SC", cursive;
   }
+
   img {
     object-fit: contain;
     object-position: center;
-    height: 150px;
-    margin: 0 5px;
+    height: 60px;
+    width: 80px; // for Safari and Firefox
+    margin: 0 ${theme.gridUnit / 2}px;
   }
 `;
