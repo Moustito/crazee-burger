@@ -56,6 +56,7 @@ const LoginFormStyled = styled.form`
 
   hr {
     border: 1.5px solid ${theme.colors.loginLine};
+    margin-top: ${theme.gridUnit * 4}px;
     margin-bottom: ${theme.gridUnit * 5}px;
   }
 
