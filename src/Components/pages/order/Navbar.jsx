@@ -3,9 +3,13 @@ import NavbarRightSide from "./NavbarRightSide";
 import Logo from "../../reusable-ui/Logo";
 
 export default function Navbar({ username }) {
+  function handleRefresh() {
+    window.location.reload(false);
+  }
+
   return (
     <NavbarStyled>
-      <Logo />
+      <Logo className="logo-hover" onClick={handleRefresh} />
       <NavbarRightSide username={username} />
     </NavbarStyled>
   );
@@ -24,5 +28,9 @@ const NavbarStyled = styled.nav`
 
   .LeftSide {
     background: pink;
+  }
+
+  .logo-hover:hover {
+    cursor: pointer;
   }
 `;

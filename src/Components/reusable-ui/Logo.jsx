@@ -2,11 +2,11 @@ import { styled } from "styled-components";
 import logo from "../../assets/images/logo-orange.png";
 import { theme } from "../../theme/index";
 
-export default function Logo() {
+export default function Logo({ className, onClick }) {
   return (
-    <LogoStyled>
+    <LogoStyled className={className}>
       <h1>Crazee</h1>
-      <img src={logo} alt="Crazee Burger Logo" />
+      <img src={logo} alt="Crazee Burger Logo" onClick={onClick} />
       <h1>Burger</h1>
     </LogoStyled>
   );
@@ -35,9 +35,5 @@ const LogoStyled = styled.div`
     height: 60px;
     width: 80px; // for Safari and Firefox
     margin: 0 ${theme.gridUnit / 2}px;
-  }
-
-  &:hover {
-    cursor: pointer;
   }
 `;
