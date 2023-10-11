@@ -36,4 +36,8 @@ const LogoStyled = styled.div`
     width: 80px; // for Safari and Firefox
     margin: 0 ${theme.gridUnit / 2}px;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
