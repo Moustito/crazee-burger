@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { theme } from "../../theme";
 
-export default function PrimaryButton({label, Icon}) {
+export default function PrimaryButton({ label, Icon }) {
   return (
     <PrimaryButtonStyled>
       <span>{label}</span>
@@ -11,7 +11,7 @@ export default function PrimaryButton({label, Icon}) {
 }
 
 const PrimaryButtonStyled = styled.button`
-    width: 100%;
+  width: 100%;
   border: 1px solid red;
   display: inline-flex;
   justify-content: center;
