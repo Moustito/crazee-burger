@@ -6,7 +6,7 @@ import { theme } from "../../../theme";
 export default function Profil({ username }) {
   return (
     <ProfilStyled>
-      <div className="Profil">
+      <div className="info">
         <h1>
           Hey <span className="username">{username}</span>
         </h1>
@@ -22,32 +22,30 @@ const ProfilStyled = styled.div`
   align-items: center;
   gap: 10px;
 
-  h1 {
-    color: ${theme.colors.greyBlue};
+  .info {
     text-align: right;
-    font-family: Open Sans;
-    font-size: ${theme.fonts.size.P0};
+    color: ${theme.colors.greyBlue};
     font-weight: ${theme.fonts.weights.regular};
-    line-height: 22px; /* 137.5% */
 
-    .username {
-      color: ${theme.colors.primary};
-      font-weight: ${theme.fonts.weights.bold};
+    h1 {
+      font-size: ${theme.fonts.size.P0};
+      line-height: 22px; /* 137.5% */
+
+      .username {
+        color: ${theme.colors.primary};
+        font-weight: ${theme.fonts.weights.bold};
+      }
     }
-  }
 
-  a {
-    color: ${theme.colors.greyBlue};
-    text-align: right;
-    font-family: Open Sans;
-    font-size: ${theme.fonts.size.XXS};
-    font-weight: ${theme.fonts.weights.regular};
-    line-height: 14px; /* 140% */
-    text-decoration: none;
+    a {
+      font-size: ${theme.fonts.size.XXS};
+      line-height: 14px; /* 140% */
+      text-decoration: none;
 
-    &:hover {
-      cursor: pointer;
-      border-bottom: 1px solid ${theme.colors.greyBlue};
+      &:hover {
+        cursor: pointer;
+        border-bottom: 1px solid ${theme.colors.greyBlue};
+      }
     }
   }
 
