@@ -24,7 +24,8 @@ const NavbarStyled = styled.nav`
   padding-left: 20px;
   padding-right: 70px;
 
-  border-radius: 15px 15px 0px 0px;
+  border-radius: ${theme.borderRadius.extraRound}
+    ${theme.borderRadius.extraRound} 0px 0px;
   background: ${theme.colors.white};
 
   .LeftSide {
