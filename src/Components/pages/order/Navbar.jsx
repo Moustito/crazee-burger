@@ -4,13 +4,13 @@ import Logo from "../../reusable-ui/Logo";
 import { theme } from "../../../theme";
 
 export default function Navbar({ username }) {
-  function handleRefresh() {
-    window.location.reload(false);
+  function handleClick() {
+    window.location.reload();
   }
 
   return (
     <NavbarStyled>
-      <Logo className="logo-hover" onClick={handleRefresh} />
+      <Logo className="logo-order-page" onClick={handleClick} />
       <NavbarRightSide username={username} />
     </NavbarStyled>
   );
@@ -32,7 +32,7 @@ const NavbarStyled = styled.nav`
     background: pink;
   }
 
-  .logo-hover:hover {
+  .logo-order-page:hover {
     cursor: pointer;
   }
 `;
