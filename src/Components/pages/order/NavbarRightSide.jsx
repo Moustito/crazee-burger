@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import { PiUserCircleFill } from "react-icons/pi";
+import { theme } from "../../../theme";
 
 export default function NavbarRightSide({ username }) {
   return (
@@ -22,33 +23,31 @@ const NavbarRightSideStyled = styled.div`
   gap: 10px;
 
   h1 {
-    color: #747b91;
+    color: ${theme.colors.greyBlue};
     text-align: right;
     font-family: Open Sans;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
+    font-size: ${theme.fonts.size.P0};
+    font-weight: ${theme.fonts.weights.regular};
     line-height: 22px; /* 137.5% */
 
     .username {
-      color: #ffa01b;
-      font-weight: 700;
+      color: ${theme.colors.primary};
+      font-weight: ${theme.fonts.weights.bold};
     }
   }
 
   a {
-    color: #747b91;
+    color: ${theme.colors.greyBlue};
     text-align: right;
     font-family: Open Sans;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
+    font-size: ${theme.fonts.size.XXS};
+    font-weight: ${theme.fonts.weights.regular};
     line-height: 14px; /* 140% */
     text-decoration: none;
 
     &:hover {
       cursor: pointer;
-      border-bottom: 1px solid #747b91;
+      border-bottom: 1px solid ${theme.colors.greyBlue};
     }
   }
 
@@ -56,6 +55,6 @@ const NavbarRightSideStyled = styled.div`
     width: 42px;
     height: 42px;
     flex-shrink: 0;
-    color: #747b91;
+    color: ${theme.colors.greyBlue};
   }
 `;

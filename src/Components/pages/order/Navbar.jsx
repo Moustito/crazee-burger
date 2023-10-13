@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import NavbarRightSide from "./NavbarRightSide";
 import Logo from "../../reusable-ui/Logo";
+import { theme } from "../../../theme";
 
 export default function Navbar({ username }) {
   function handleRefresh() {
@@ -24,7 +25,7 @@ const NavbarStyled = styled.nav`
   padding-right: 70px;
 
   border-radius: 15px 15px 0px 0px;
-  background: #fff;
+  background: ${theme.colors.white};
 
   .LeftSide {
     background: pink;
