@@ -6,6 +6,7 @@ import { theme } from "../../../theme";
 export default function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled>
+      {/* <div className="admin-button">Admin Button</div> */}
       <div>
         <h1>
           Hey <span className="username">{username}</span>
