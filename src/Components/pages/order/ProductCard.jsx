@@ -1,14 +1,13 @@
 import styled from "styled-components";
-import burger from "../../../../public/images/burger1.png";
 
-export default function ProductCard({ className }) {
+export default function ProductCard({ className, datas }) {
   return (
     <ProductCardStyled className={className}>
-      <img src={burger} alt="" />
+      <img src={datas.imageSource} alt="" />
       <div className="card-menu-content">
-        <h3>Titre</h3>
+        <h3>{datas.title}</h3>
         <div>
-          <p>Prix</p>
+          <p>{datas.price}</p>
           <button>Ajouter</button>
         </div>
       </div>
