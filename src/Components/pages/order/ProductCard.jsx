@@ -23,7 +23,6 @@ const ProductCardStyled = styled.div`
   box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.2);
   width: 240px;
   height: 330px;
-  margin-top: 50px;
   padding: 50px 20px 25px 20px;
 
   img {
