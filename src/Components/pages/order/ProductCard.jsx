@@ -28,6 +28,8 @@ const ProductCardStyled = styled.div`
 
   img {
     width: 200px;
+    height: 145px;
+    object-fit: contain;
   }
 
   .card-menu-content {
