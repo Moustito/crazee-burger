@@ -6,7 +6,7 @@ import Logo from "../../reusable-ui/Logo";
 function LoginPage() {
   return (
     <LoginPageStyled>
-      <Logo $scale />
+      <Logo className="logo-login-page" />
       <LoginForm />
     </LoginPageStyled>
   );
@@ -25,4 +25,8 @@ const LoginPageStyled = styled.div`
 
   background: url(${BurgerBackground}) rgba(0, 0, 0, 0.6) fixed center/cover;
   background-blend-mode: darken;
+
+  .logo-login-page {
+    transform: scale(2.5);
+  }
 `;
