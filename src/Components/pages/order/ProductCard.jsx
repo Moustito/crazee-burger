@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { formatPrice } from "../../../utils/maths";
 
 export default function ProductCard({ className, datas }) {
   return (
@@ -7,7 +8,7 @@ export default function ProductCard({ className, datas }) {
       <div className="card-menu-content">
         <h3>{datas.title}</h3>
         <div>
-          <p>{datas.price}</p>
+          <p>{formatPrice(datas.price)}</p>
           <button>Ajouter</button>
         </div>
       </div>
