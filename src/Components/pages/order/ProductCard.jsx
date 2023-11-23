@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { formatPrice } from "../../../utils/maths";
 
-export default function ProductCard({ className, product }) {
+export default function ProductCard({ className, imageSource, title, price }) {
   return (
     <ProductCardStyled className={className}>
-      <img src={product.imageSource} alt={product.title} />
-      <div className="card-menu-content">
-        <h3>{product.title}</h3>
-        <div>
-          <p>{formatPrice(product.price)}</p>
-          <button>Ajouter</button>
+      <img src={imageSource} alt={title} />
+      <div className="info-text">
+        <h3 className="title">{title}</h3>
+        <div className="description">
+          <p className="price">{formatPrice(price)}</p>
+          <button className="add-button">Ajouter</button>
         </div>
       </div>
     </ProductCardStyled>
@@ -32,28 +32,32 @@ const ProductCardStyled = styled.div`
     object-fit: contain;
   }
 
-  .card-menu-content {
+  .info-text {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     flex: 1;
-    h3 {
+
+    .title {
       color: #17161a;
       font-family: Amatic SC;
       font-size: 36px;
       font-weight: 700;
     }
-    div {
+
+    .description {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      p {
+
+      .price {
         color: #ffa01b;
         font-family: Open Sans;
         font-size: 16px;
         font-weight: 400;
       }
-      button {
+
+      .add-button {
         border-radius: 5px;
         border: 1px solid #ff9f1b;
         background: #ff9f1b;
