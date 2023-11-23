@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { fakeMenu2 } from "../../../fakeData/fakeMenu";
 import ProductCard from "./ProductCard";
+import { useState } from "react";
 
 export default function Menu() {
+const [products, setProducts] = useState(fakeMenu2);
+
   return (
     <MenuStyled>
-      {fakeMenu2.map((Menu) => (
-        <ProductCard key={Menu.id} datas={Menu} />
+      {products.map((product) => (
+        <ProductCard key={product.id} datas={product} />
       ))}
     </MenuStyled>
   );
