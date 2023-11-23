@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { formatPrice } from "../../../utils/maths";
 
-export default function ProductCard({ className, datas }) {
+export default function ProductCard({ className, product }) {
   return (
     <ProductCardStyled className={className}>
-      <img src={datas.imageSource} alt="" />
+      <img src={product.imageSource} alt={product.title} />
       <div className="card-menu-content">
-        <h3>{datas.title}</h3>
+        <h3>{product.title}</h3>
         <div>
-          <p>{formatPrice(datas.price)}</p>
+          <p>{formatPrice(product.price)}</p>
           <button>Ajouter</button>
         </div>
       </div>

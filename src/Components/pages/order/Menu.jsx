@@ -9,7 +9,7 @@ const [products, setProducts] = useState(fakeMenu2);
   return (
     <MenuStyled>
       {products.map((product) => (
-        <ProductCard key={product.id} datas={product} />
+        <ProductCard key={product.id} product={product} />
       ))}
     </MenuStyled>
   );
