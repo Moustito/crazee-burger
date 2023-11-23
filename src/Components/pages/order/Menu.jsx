@@ -13,9 +13,11 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
-  display: grid;
-  grid-gap: 80px;
-  grid-template-columns: repeat(4, 240px);
-  justify-content: center;
   width: 100%;
+  padding: 50px 50px 150px;
+  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 60px;
+  justify-items: center;
 `;

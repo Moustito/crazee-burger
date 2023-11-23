@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import { theme } from "../../../theme";
-import Basket from "./Basket";
+// import Basket from "./Basket";
 import Menu from "./Menu";
 
 export default function Main() {
@@ -15,7 +15,6 @@ export default function Main() {
 const MainStyled = styled.div`
   display: flex;
   flex: 1;
-  padding: 50px;
   overflow-y: scroll;
   
   border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
