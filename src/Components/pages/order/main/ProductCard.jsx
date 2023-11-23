@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { formatPrice } from "../../../utils/maths";
+import { formatPrice } from "../../../../utils/maths";
 
 export default function ProductCard({ className, imageSource, title, price }) {
   return (

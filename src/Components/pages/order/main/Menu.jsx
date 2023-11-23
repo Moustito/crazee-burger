@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { fakeMenu2 } from "../../../fakeData/fakeMenu";
+import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import ProductCard from "./ProductCard";
 import { useState } from "react";
 
