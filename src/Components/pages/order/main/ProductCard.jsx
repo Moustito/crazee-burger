@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { formatPrice } from "../../../../utils/maths";
+import PrimaryButton from "../../../reusable-ui/PrimaryButton";
+import { theme } from "../../../../theme";
 
 export default function ProductCard({ className, imageSource, title, price }) {
   return (
@@ -9,7 +11,7 @@ export default function ProductCard({ className, imageSource, title, price }) {
         <h3 className="title">{title}</h3>
         <div className="description">
           <p className="price">{formatPrice(price)}</p>
-          <button className="add-button">Ajouter</button>
+          <PrimaryButton label={"Ajouter"} className={"add-button"} />
         </div>
       </div>
     </ProductCardStyled>
@@ -19,8 +21,8 @@ export default function ProductCard({ className, imageSource, title, price }) {
 const ProductCardStyled = styled.div`
   display: flex;
   flex-direction: column;
-  border-radius: 15px;
-  background: #fff;
+  border-radius: ${theme.borderRadius.extraRound};;
+  background: ${theme.colors.white};
   box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.2);
   width: 240px;
   height: 330px;
@@ -39,46 +41,39 @@ const ProductCardStyled = styled.div`
     flex: 1;
 
     .title {
-      color: #17161a;
-      font-family: Amatic SC;
-      font-size: 36px;
-      font-weight: 700;
+      color: ${theme.colors.dark};
+      font-family: "Amatic SC", cursive;
+      font-size: ${theme.fonts.size.P4};
+      font-weight: ${theme.fonts.weights.bold};
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: auto 0;
     }
 
     .description {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-
+      
       .price {
-        color: #ffa01b;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: ${theme.colors.primary};
         font-family: Open Sans;
         font-size: 16px;
-        font-weight: 400;
+        font-weight: ${theme.fonts.weights.medium};
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .add-button {
-        border-radius: 5px;
-        border: 1px solid #ff9f1b;
-        background: #ff9f1b;
-        width: 95px;
-        height: 38px;
-
-        color: #fff;
-        text-align: center;
-        font-family: Arial;
-        font-size: 11px;
-        font-weight: 700;
-
-        &:hover {
-          cursor: pointer;
-          background: #fff;
-          color: #ff9f1b;
-        }
-        &:active {
-          background: #ff9f1b;
-          color: #fff;
-        }
+        width:95px;
+        font-size: ${theme.fonts.size.XS};
+        cursor: pointer;
+        padding: 12px;
       }
     }
   }
