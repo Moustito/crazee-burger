@@ -8,29 +8,28 @@ import ToggleButton from "../../../reusable-ui/ToggleButton";
 export default function NavbarRightSide({ username }) {
   const [isChecked, setIsChecked] = useState(false);
 
-  function handleToggle() {
-    if (isChecked) {
-      return setIsChecked(false);
+  function displayToastAdmin() {
+    if (!isChecked) {
+      toast.info("Mode admin activé", {
+        // icon: <FaUserSecret size={30} />,
+        theme: "dark",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
-    toast.info("Mode admin activé", {
-      // icon: <FaUserSecret size={30} />,
-      theme: "dark",
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-    return setIsChecked(true);
+    setIsChecked(!isChecked);
   }
 
   return (
     <NavbarRightSideStyled>
       <ToggleButton
         isChecked={isChecked}
-        onToggle={() => handleToggle()}
+        onToggle={() => displayToastAdmin()}
         labelIfChecked="Désactiver le mode admin"
         labelIfUnchecked="Activer le mode admin"
       />
