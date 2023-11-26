@@ -26,20 +26,20 @@ const PrimaryButtonStyled = styled.button`
   font-size: 15px;
   font-weight: 800;
   color: white;
-  background-color: ${theme.colors.primary_burger};
-  border: 1px solid ${theme.colors.primary_burger};
+  background-color: ${theme.colors.primary};
+  border: 1px solid ${theme.colors.primary};
 
   &:hover:not(:disabled) {
     background-color: white;
-    color: ${theme.colors.primary_burger};
-    border: 1px solid ${theme.colors.primary_burger};
+    color: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary};
     transition: all 200ms ease-out;
   }
 
   &:active {
     color: white;
-    background-color: ${theme.colors.primary_burger};
-    border: 1px solid ${theme.colors.primary_burger};
+    background-color: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary};
   }
 
   &:disabled {
