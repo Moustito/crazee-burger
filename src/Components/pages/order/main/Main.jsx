@@ -2,12 +2,14 @@ import { styled } from "styled-components";
 import { theme } from "../../../../theme";
 // import Basket from "./Basket";
 import Menu from "./Menu";
+import AdminPanel from "../adminPanel/AdminPanel";
 
 export default function Main() {
   return (
     <MainStyled>
       {/* <Basket /> */}
       <Menu />
+      <AdminPanel />
     </MainStyled>
   );
 }
