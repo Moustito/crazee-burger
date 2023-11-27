@@ -3,16 +3,28 @@ import { styled } from "styled-components";
 import Navbar from "./navbar/Navbar";
 import Main from "./main/Main";
 import { theme } from "../../../theme";
+import AdminPanel from "./adminPanel/AdminPanel";
+import AdminContext from "../../../context/isModeAdminContext";
+import { useState } from "react";
+
 
 export default function OrderPage() {
   const { username } = useParams();
+  const [isChecked, setIsChecked] = useState(false);
+  const adminContextValue = {
+    isChecked,
+    setIsChecked
+  };
 
   return (
     <OrderPageStyled>
-      <div className="container">
-        <Navbar username={username} />
-        <Main />
-      </div>
+      <AdminContext.Provider value={adminContextValue}>
+        <div className="container">
+          <Navbar username={username} />
+          <Main />
+          <AdminPanel />
+        </div>
+      </AdminContext.Provider>
     </OrderPageStyled>
   );
 }

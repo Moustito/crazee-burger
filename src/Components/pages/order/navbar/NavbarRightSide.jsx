@@ -1,12 +1,13 @@
 import { styled } from "styled-components";
-import { useState } from "react";
+import { useContext } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Profile from "./Profile";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
+import AdminContext from "../../../../context/isModeAdminContext";
 
 export default function NavbarRightSide({ username }) {
-  const [isChecked, setIsChecked] = useState(false);
+  const {isChecked, setIsChecked} = useContext(AdminContext)
 
   function displayToastAdmin() {
     if (!isChecked) {

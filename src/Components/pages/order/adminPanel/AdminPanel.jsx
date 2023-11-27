@@ -3,16 +3,19 @@ import AdminPanelTabs from "../../../reusable-ui/AdminPanelTabs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { FiChevronDown } from "react-icons/fi";
 import { MdModeEditOutline } from "react-icons/md";
+import { useContext } from "react";
+import AdminContext from "../../../../context/isModeAdminContext";
 
 export default function AdminPanel() {
+  const { isChecked } = useContext(AdminContext);
+  const display = isChecked ? 'block' : 'none';
+
   return (
-    <AdminPanelStyled>
+    <AdminPanelStyled style={{ display: display }}>
+      {isChecked ? "true" : "false"}
       <div className="tabs">
         <AdminPanelTabs Icon={<FiChevronDown />} />
-        <AdminPanelTabs
-          Icon={<AiOutlinePlus />}
-          label={"Ajouter un produit"}
-        />
+        <AdminPanelTabs Icon={<AiOutlinePlus />} label={"Ajouter un produit"} />
         <AdminPanelTabs
           Icon={<MdModeEditOutline />}
           label={"Modifier un produit"}
