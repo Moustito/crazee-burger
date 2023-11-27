@@ -1,27 +1,39 @@
 import styled from "styled-components";
 import AdminPanelTabs from "../../../reusable-ui/AdminPanelTabs";
 import { AiOutlinePlus } from "react-icons/ai";
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { MdModeEditOutline } from "react-icons/md";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AdminContext from "../../../../context/isModeAdminContext";
 
 export default function AdminPanel() {
   const { isChecked } = useContext(AdminContext);
-  const display = isChecked ? 'block' : 'none';
+  const displayValue = isChecked ? "block" : "none";
+
+  const [displayPanel, setDisplayPanel] = useState(true);
+  const displayPanelValue = displayPanel ? "block" : "none";
+
+  function handleDisplayPanel() {
+    setDisplayPanel(!displayPanel);
+  }
 
   return (
-    <AdminPanelStyled style={{ display: display }}>
-      {isChecked ? "true" : "false"}
+    <AdminPanelStyled style={{ display: displayValue }}>
       <div className="tabs">
-        <AdminPanelTabs Icon={<FiChevronDown />} />
-        <AdminPanelTabs Icon={<AiOutlinePlus />} label={"Ajouter un produit"} />
+        <AdminPanelTabs
+          Icon={displayPanel ? <FiChevronDown /> : <FiChevronUp />}
+          onClick={() => handleDisplayPanel()}
+        />
+        <AdminPanelTabs 
+            Icon={<AiOutlinePlus />} 
+            label={"Ajouter un produit"} 
+        />
         <AdminPanelTabs
           Icon={<MdModeEditOutline />}
           label={"Modifier un produit"}
         />
       </div>
-      <div className="panel">
+      <div className="panel" style={{ display: displayPanelValue }}>
         <p>Ajouter un produit</p>
       </div>
     </AdminPanelStyled>
