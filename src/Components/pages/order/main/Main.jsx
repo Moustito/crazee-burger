@@ -17,16 +17,17 @@ export default function Main() {
 }
 
 const MainStyled = styled.div`
-  display: flex;
-  flex: 1;
-  overflow-y: scroll;
-  
+  height: calc(95vh - 10vh);
   border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
   background: ${theme.colors.background_white};
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
 
+  display: flex;
+
   .menu-and-admin {
     width: 100%;
     position: relative;
+    overflow-y: hidden;
+    display: grid;
   }
 `;
