@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-export default function AdminPanelTabs({ Icon, onClick, label }) {
+export default function Tabs({ className, Icon, onClick, label }) {
   return (
-    <AdminPanelTabsStyled onClick={onClick}>
+    <TabsStyled className={className} onClick={onClick}>
       {Icon && <span>{Icon}</span>}
       {label && <p>{label}</p>}
-    </AdminPanelTabsStyled>
+    </TabsStyled>
   );
 }
 
-const AdminPanelTabsStyled = styled.div`
+const TabsStyled = styled.div`
   background-color: #e4e5e9;
   display: flex;
   height: 43px;
