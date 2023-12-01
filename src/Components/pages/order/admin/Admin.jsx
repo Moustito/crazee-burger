@@ -5,6 +5,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { MdModeEditOutline } from "react-icons/md";
 import { useContext, useState } from "react";
 import AdminContext from "../../../../context/isModeAdminContext";
+import {theme} from "../../../../theme"
 
 export default function Admin() {
   const { isChecked } = useContext(AdminContext);
@@ -69,29 +70,27 @@ const AdminStyled = styled.div`
 
     .showTabsStyle {
       border-radius: 5px 5px 0px 0px;
-      border-top: 1px solid #292729;
-      border-right: 1px solid #292729;
-      border-bottom: 2px solid #292729;
-      border-left: 1px solid #292729;
-      background: #292729;
-      box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
+      border: 1px solid ${theme.colors.background_dark};
+      background: ${theme.colors.background_dark};
+      box-shadow: 0px -6px 8px -2px ${theme.shadows.subtle};
+
+      span, p {
+        color: ${theme.colors.white};
+      }
     }
   }
   .adminPanel {
-    border-top: 1px solid #e4e5e9;
-    background: #fff;
-    box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid ${theme.colors.greyLight};
+    background: ${theme.colors.white};
+    box-shadow: 0px -6px 8px -2px ${theme.shadows.subtle};
     height: 250px;
     padding-top: 17px;
     padding-left: 21px;
 
     p {
-      color: #000;
+      color: ${theme.colors.dark};
       font-family: Open Sans;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
+      font-size: ${theme.fonts.size.P0};
     }
   }
 `;

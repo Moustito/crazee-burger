@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../theme";
 
 export default function Tabs({ className, Icon, onClick, label }) {
   return (
@@ -10,7 +11,7 @@ export default function Tabs({ className, Icon, onClick, label }) {
 }
 
 const TabsStyled = styled.div`
-  background-color: #e4e5e9;
+  background-color: ${theme.colors.greyLight};
   display: flex;
   height: 43px;
   padding: 10px 22px;
@@ -18,28 +19,27 @@ const TabsStyled = styled.div`
   align-items: center;
   border-radius: 5px 5px 0px 0px;
   gap: 13px;
-  box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px -6px 8px -2px ${theme.shadows.subtle};
 
   span {
-    color: #93a2b1;
+    color: ${theme.colors.greySemiDark};
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   p {
-    color: #93a2b1;
+    color: ${theme.colors.greySemiDark};
     text-align: center;
     font-family: Open Sans;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: ${theme.fonts.size.P0};
     border-bottom: 2px solid transparent;
   }
 
   &:hover {
     cursor: pointer;
     p {
-      border-bottom: 2px solid #93a2b1;
+      border-bottom: 2px solid ${theme.colors.greySemiDark};
     }
   }
 `;
