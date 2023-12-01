@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 import Navbar from "./navbar/Navbar";
 import Main from "./main/Main";
 import { theme } from "../../../theme";
-import Admin from "./admin/Admin";
 import AdminContext from "../../../context/isModeAdminContext";
 import { useState } from "react";
 
@@ -22,7 +21,6 @@ export default function OrderPage() {
         <div className="container">
           <Navbar username={username} />
           <Main />
-          <Admin />
         </div>
       </AdminContext.Provider>
     </OrderPageStyled>

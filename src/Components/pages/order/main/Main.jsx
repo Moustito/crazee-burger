@@ -1,13 +1,17 @@
 import { styled } from "styled-components";
 import { theme } from "../../../../theme";
-// import Basket from "./Basket";
+import Basket from "./Basket";
 import Menu from "./Menu";
+import Admin from "../admin/Admin";
 
 export default function Main() {
   return (
     <MainStyled>
-      {/* <Basket /> */}
-      <Menu />
+      <Basket />
+      <div className="menu-and-admin">
+        <Menu />
+        <Admin />
+      </div>
     </MainStyled>
   );
 }
