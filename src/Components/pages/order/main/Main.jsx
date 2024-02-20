@@ -3,14 +3,18 @@ import { theme } from "../../../../theme";
 // import Basket from "./Basket";
 import Menu from "./Menu";
 import Admin from "../admin/Admin";
+import { useContext } from "react";
+import OrderContext from "../../../../context/OrderContext";
 
 export default function Main() {
+  const { isModeAdmin } = useContext(OrderContext);
+
   return (
     <MainStyled>
       {/* <Basket /> */}
       <div className="menu-and-admin">
         <Menu />
-        <Admin />
+        {isModeAdmin && <Admin />}
       </div>
     </MainStyled>
   );
@@ -18,7 +22,8 @@ export default function Main() {
 
 const MainStyled = styled.div`
   height: calc(95vh - 10vh);
-  border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
+  border-radius: 0px 0px ${theme.borderRadius.extraRound}
+    ${theme.borderRadius.extraRound};
   background: ${theme.colors.background_white};
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
 

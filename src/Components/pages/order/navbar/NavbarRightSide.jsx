@@ -7,10 +7,10 @@ import ToggleButton from "../../../reusable-ui/ToggleButton";
 import OrderContext from "../../../../context/OrderContext";
 
 export default function NavbarRightSide({ username }) {
-  const { isChecked, setIsChecked } = useContext(OrderContext);
+  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
 
   function displayToastAdmin() {
-    if (!isChecked) {
+    if (!isModeAdmin) {
       toast.info("Mode admin activé", {
         // icon: <FaUserSecret size={30} />,
         theme: "dark",
@@ -23,13 +23,13 @@ export default function NavbarRightSide({ username }) {
         progress: undefined,
       });
     }
-    setIsChecked(!isChecked);
+    setIsModeAdmin(!isModeAdmin);
   }
 
   return (
     <NavbarRightSideStyled>
       <ToggleButton
-        isChecked={isChecked}
+        isChecked={isModeAdmin}
         onToggle={() => displayToastAdmin()}
         labelIfChecked="Désactiver le mode admin"
         labelIfUnchecked="Activer le mode admin"
