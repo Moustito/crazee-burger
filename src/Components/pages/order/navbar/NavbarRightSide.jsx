@@ -4,10 +4,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Profile from "./Profile";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
-import AdminContext from "../../../../context/isModeAdminContext";
+import OrderContext from "../../../../context/OrderContext";
 
 export default function NavbarRightSide({ username }) {
-  const {isChecked, setIsChecked} = useContext(AdminContext)
+  const { isChecked, setIsChecked } = useContext(OrderContext);
 
   function displayToastAdmin() {
     if (!isChecked) {

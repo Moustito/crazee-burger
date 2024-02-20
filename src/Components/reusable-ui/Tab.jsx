@@ -1,16 +1,17 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function Tabs({ className, Icon, onClick, label }) {
+export default function Tab({ className, Icon, onClick, label }) {
   return (
-    <TabsStyled className={className} onClick={onClick}>
+    <TabStyled className={className} onClick={onClick}>
       {Icon && <span>{Icon}</span>}
       {label && <p>{label}</p>}
-    </TabsStyled>
+    </TabStyled>
   );
 }
 
-const TabsStyled = styled.div`
+const TabStyled = styled.button`
+  border: 0;
   background-color: ${theme.colors.greyLight};
   display: flex;
   height: 43px;
