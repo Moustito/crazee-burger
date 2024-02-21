@@ -21,9 +21,9 @@ export default function ProductCard({ className, imageSource, title, price }) {
 const ProductCardStyled = styled.div`
   display: flex;
   flex-direction: column;
-  border-radius: ${theme.borderRadius.extraRound};;
+  border-radius: ${theme.borderRadius.extraRound};
   background: ${theme.colors.white};
-  box-shadow: -8px 8px 20px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: ${theme.shadows.strong};
   width: 240px;
   height: 330px;
   padding: 50px 20px 25px 20px;
@@ -55,7 +55,7 @@ const ProductCardStyled = styled.div`
     .description {
       display: flex;
       justify-content: space-between;
-      
+
       .price {
         display: flex;
         justify-content: flex-start;
@@ -70,7 +70,7 @@ const ProductCardStyled = styled.div`
       }
 
       .add-button {
-        width:95px;
+        width: 95px;
         font-size: ${theme.fonts.size.XS};
         cursor: pointer;
         padding: 12px;

@@ -20,7 +20,7 @@ const TabStyled = styled.button`
   align-items: center;
   border-radius: 5px 5px 0px 0px;
   gap: 13px;
-  box-shadow: 0px -6px 8px -2px ${theme.shadows.subtle};
+  box-shadow: ${theme.shadows.subtle};
   border: 1px solid ${theme.colors.greyLight};
   border-bottom: 2px solid ${theme.colors.greyLight};
 
