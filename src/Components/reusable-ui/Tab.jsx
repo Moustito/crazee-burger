@@ -12,7 +12,7 @@ export default function Tab({ className, Icon, onClick, label }) {
 
 const TabStyled = styled.button`
   border: 0;
-  background-color: ${theme.colors.greyLight};
+  background-color: ${theme.colors.white};
   display: flex;
   height: 43px;
   padding: 10px 22px;
@@ -21,6 +21,8 @@ const TabStyled = styled.button`
   border-radius: 5px 5px 0px 0px;
   gap: 13px;
   box-shadow: 0px -6px 8px -2px ${theme.shadows.subtle};
+  border: 1px solid ${theme.colors.greyLight};
+  border-bottom: 2px solid ${theme.colors.greyLight};
 
   span {
     color: ${theme.colors.greySemiDark};
@@ -38,6 +40,7 @@ const TabStyled = styled.button`
   }
 
   &:hover {
+    border-bottom: 2px solid transparent;
     cursor: pointer;
     p {
       border-bottom: 2px solid ${theme.colors.greySemiDark};
