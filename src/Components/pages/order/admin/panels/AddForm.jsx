@@ -1,10 +1,15 @@
 import styled from "styled-components";
 import TextInput from "../../../../reusable-ui/TextInput";
-import { FaHamburger } from "react-icons/fa";
+import { FaHamburger, FaNapster } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 
 export default function AddForm() {
+  function AddProductCard(event) {
+    event.preventDefault();
+    alert("AddProductCard");
+  }
+
   return (
     <AddFormStyled>
       <div className="picture">Aucune image</div>
@@ -26,7 +31,9 @@ export default function AddForm() {
           placeholder={"Prix"}
           className={"AdminForm"}
         />
-        <button>Ajouter un nouveau produit au menu</button>
+        <button onClick={(event) => AddProductCard(event)}>
+          Ajouter un nouveau produit au menu
+        </button>
       </form>
     </AddFormStyled>
   );
@@ -47,8 +54,10 @@ const AddFormStyled = styled.div`
 
     border: 1px solid #e4e5e9;
     border-radius: 5px;
-    color: #e4e5e9;
-    background-color: white;
+
+    color: #93a2b1;
+    background-color: #e4e5e9;
+    font-size: 16px;
   }
 
   form {
@@ -82,6 +91,10 @@ const AddFormStyled = styled.div`
 
       color: white;
       background-color: #60bd4f;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 `;
