@@ -23,7 +23,7 @@ const ProductCardStyled = styled.div`
   flex-direction: column;
   border-radius: ${theme.borderRadius.extraRound};
   background: ${theme.colors.white};
-  box-shadow: ${theme.shadows.strong};
+  box-shadow: ${theme.shadows.medium};
   width: 240px;
   height: 330px;
   padding: 50px 20px 25px 20px;
