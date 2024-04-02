@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
+import { fakeMenu } from "../../../../fakeData/fakeMenu";
 import ProductCard from "./ProductCard";
 import { useState } from "react";
 
 export default function Menu() {
-  const [products, setProducts] = useState(fakeMenu2);
+  const [products, setProducts] = useState(fakeMenu.SMALL);
 
   return (
     <MenuStyled>
