@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 import { useState } from "react";
 
 export default function Menu() {
-  const [products, setProducts] = useState(fakeMenu.SMALL);
+  const [products] = useState(fakeMenu.SMALL);
 
   return (
     <MenuStyled>
