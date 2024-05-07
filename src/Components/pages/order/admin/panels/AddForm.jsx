@@ -46,7 +46,7 @@ export default function AddForm() {
     }
 
     const newProduct = {
-      id: Math.random().toString(),
+      id: Math.random(),
       ...formData,
       quantity: 0,
       isAvailable: true,
