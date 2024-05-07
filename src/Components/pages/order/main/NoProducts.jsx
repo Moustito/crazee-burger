@@ -24,4 +24,20 @@ export default function NoProducts() {
   );
 }
 
-const NoProductsStyled = styled.div``;
+const NoProductsStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    font-family: Amatic SC;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 45.4px;
+    text-align: center;
+  }
+  .title {
+    font-weight: 700;
+  }
+`;
