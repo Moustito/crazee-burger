@@ -2,10 +2,25 @@ import styled from "styled-components";
 import { formatPrice } from "../../../../utils/maths";
 import PrimaryButton from "../../../reusable-ui/PrimaryButton";
 import { theme } from "../../../../theme";
+import { TiDelete } from "react-icons/ti";
+import { useContext } from "react";
+import OrderContext from "../../../../context/OrderContext";
 
-export default function ProductCard({ className, imageSource, title, price }) {
+export default function ProductCard({
+  className,
+  imageSource,
+  title,
+  price,
+  id,
+  HandleDelete,
+}) {
+  const { isModeAdmin } = useContext(OrderContext);
+
   return (
     <ProductCardStyled className={className}>
+      {isModeAdmin && (
+        <TiDelete className="icon" onClick={() => HandleDelete(id)} />
+      )}
       <img src={imageSource} alt={title} />
       <div className="info-text">
         <h3 className="title">{title}</h3>
@@ -20,6 +35,7 @@ export default function ProductCard({ className, imageSource, title, price }) {
 
 const ProductCardStyled = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   border-radius: ${theme.borderRadius.extraRound};
   background: ${theme.colors.white};
@@ -27,6 +43,21 @@ const ProductCardStyled = styled.div`
   width: 240px;
   height: 330px;
   padding: 50px 20px 25px 20px;
+
+  .icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+
+    color: #ffa01b;
+
+    &:hover {
+      cursor: pointer;
+      color: #e25549;
+    }
+  }
 
   img {
     width: 200px;
