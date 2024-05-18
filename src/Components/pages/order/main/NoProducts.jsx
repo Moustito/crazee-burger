@@ -40,4 +40,7 @@ const NoProductsStyled = styled.div`
   .title {
     font-weight: 700;
   }
+  button {
+    margin-top: 30px;
+  }
 `;
