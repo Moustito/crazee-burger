@@ -5,7 +5,6 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { FiCheck } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
-import comingSoon from "../../../../../assets/images/coming-soon.png";
 import OrderContext from "../../../../../context/OrderContext";
 
 const EMPTY_PRODUCT = {
@@ -43,11 +42,6 @@ export default function AddForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
-
-    // Affiche l'image "comingSoon" si auncune url spécifié
-    if (newProduct.imageSource === "") {
-      newProduct.imageSource = `${comingSoon}`;
-    }
 
     const newProductToAdd = {
       ...newProduct,

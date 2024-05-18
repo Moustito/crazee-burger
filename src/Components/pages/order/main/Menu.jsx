@@ -3,6 +3,7 @@ import ProductCard from "./ProductCard";
 import { useContext } from "react";
 import NoProducts from "./NoProducts";
 import OrderContext from "../../../../context/OrderContext";
+import comingSoon from "../../../../assets/images/coming-soon.png";
 
 export default function Menu() {
   const { menu } = useContext(OrderContext);
@@ -18,13 +19,13 @@ export default function Menu() {
 
   return (
     <MenuStyled>
-      {menu.map((product) => (
+      {menu.map(({ id, title, imageSource, price }) => (
         <ProductCard
-          key={product.id}
-          id={product.id}
-          title={product.title}
-          imageSource={product.imageSource}
-          price={product.price}
+          key={id}
+          id={id}
+          title={title}
+          imageSource={imageSource === "" ? `${comingSoon}` : imageSource}
+          price={price}
           handleDelete={handleDelete}
         />
       ))}
