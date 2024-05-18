@@ -60,7 +60,7 @@ export default function AddForm() {
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="picture">
+      <div className="imagePreview">
         {newProduct.imageSource ? (
           <img src={newProduct.imageSource} alt={newProduct.title} />
         ) : (
@@ -115,7 +115,7 @@ const AddFormStyled = styled.form`
   padding-top: 30px;
   padding-left: 70px;
 
-  .picture {
+  .imagePreview {
     width: 215px;
     height: 120px;
     overflow: hidden;
