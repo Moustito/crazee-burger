@@ -8,13 +8,14 @@ import { useContext, useEffect, useState } from "react";
 import comingSoon from "../../../../../assets/images/coming-soon.png";
 import OrderContext from "../../../../../context/OrderContext";
 
+const EMPTY_PRODUCT = {
+  title: "",
+  price: 0,
+  imageSource: "",
+};
+
 export default function AddForm() {
-  const [formData, setFormData] = useState({
-    id: new Date().getTime(),
-    title: "",
-    price: "",
-    imageSource: "",
-  });
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [loading, setLoading] = useState(false);
   const { handleAddProduct } = useContext(OrderContext);
 
@@ -32,11 +33,11 @@ export default function AddForm() {
   }, [loading]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
+    const { name, value } = e.target; // Destructuration de l'objet "e.target" pour obtenir name et value
+    setNewProduct({
+      ...newProduct,
       [name]: value,
-    }));
+    });
   };
 
   const handleSubmit = (event) => {
@@ -44,14 +45,19 @@ export default function AddForm() {
     setLoading(true);
 
     // Affiche l'image "comingSoon" si auncune url spécifié
-    if (formData.imageSource === "") {
-      formData.imageSource = `${comingSoon}`;
+    if (newProduct.imageSource === "") {
+      newProduct.imageSource = `${comingSoon}`;
     }
 
-    handleAddProduct(formData);
+    const newProductToAdd = {
+      ...newProduct,
+      id: crypto.randomUUID,
+    };
+
+    handleAddProduct(newProductToAdd);
 
     // Vide le formulaire
-    setFormData({
+    setNewProduct({
       title: "",
       price: "",
       imageSource: "",
@@ -61,8 +67,8 @@ export default function AddForm() {
   return (
     <AddFormStyled onSubmit={handleSubmit}>
       <div className="picture">
-        {formData.imageSource ? (
-          <img src={formData.imageSource} alt={formData.title} />
+        {newProduct.imageSource ? (
+          <img src={newProduct.imageSource} alt={newProduct.title} />
         ) : (
           <p>Aucune image</p>
         )}
@@ -73,7 +79,7 @@ export default function AddForm() {
           placeholder={"Nom du produit (ex: Super Burger)"}
           className={"AdminForm"}
           onChange={handleChange}
-          value={formData.title}
+          value={newProduct.title}
           name={"title"}
         />
         <TextInput
@@ -83,7 +89,7 @@ export default function AddForm() {
           }
           className={"AdminForm"}
           onChange={handleChange}
-          value={formData.imageSource}
+          value={newProduct.imageSource}
           name={"imageSource"}
         />
         <TextInput
@@ -91,7 +97,7 @@ export default function AddForm() {
           placeholder={"Prix"}
           className={"AdminForm"}
           onChange={handleChange}
-          value={formData.price}
+          value={newProduct.price ? newProduct.price : ""}
           name={"price"}
         />
         <div>
