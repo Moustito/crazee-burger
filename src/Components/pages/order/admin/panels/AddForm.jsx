@@ -51,11 +51,7 @@ export default function AddForm() {
     handleAddProduct(newProductToAdd);
 
     // Vide le formulaire
-    setNewProduct({
-      title: "",
-      price: "",
-      imageSource: "",
-    });
+    setNewProduct(EMPTY_PRODUCT);
   };
 
   return (
