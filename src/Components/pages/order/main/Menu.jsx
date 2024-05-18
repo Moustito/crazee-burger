@@ -1,38 +1,31 @@
 import styled from "styled-components";
-import { fakeMenu } from "../../../../fakeData/fakeMenu";
 import ProductCard from "./ProductCard";
-import { useState } from "react";
+import { useContext } from "react";
 import NoProducts from "./NoProducts";
+import OrderContext from "../../../../context/OrderContext";
 
 export default function Menu() {
-  const [products, setProducts] = useState(fakeMenu.SMALL);
+  const { menu } = useContext(OrderContext);
+  const { handleDelete } = useContext(OrderContext);
 
-  function HandleDelete(id) {
-    const productsCopy = [...products];
-    const productsFiltre = productsCopy.filter(
-      (productsList) => id !== productsList.id
-    );
-    setProducts((fakeMenu.SMALL = productsFiltre));
-    console.log(products);
-  }
-
-  if (products.length === 0) {
+  if (menu.length === 0) {
     return (
       <MenuStyled>
         <NoProducts />
       </MenuStyled>
     );
   }
+
   return (
     <MenuStyled>
-      {products.map((product) => (
+      {menu.map((product) => (
         <ProductCard
           key={product.id}
           id={product.id}
           title={product.title}
           imageSource={product.imageSource}
           price={product.price}
-          HandleDelete={HandleDelete}
+          handleDelete={handleDelete}
         />
       ))}
     </MenuStyled>

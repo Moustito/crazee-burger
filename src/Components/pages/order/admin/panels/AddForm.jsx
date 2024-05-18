@@ -4,17 +4,19 @@ import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { FiCheck } from "react-icons/fi";
-import { useEffect, useState } from "react";
-import { fakeMenu } from "../../../../../fakeData/fakeMenu";
+import { useContext, useEffect, useState } from "react";
 import comingSoon from "../../../../../assets/images/coming-soon.png";
+import OrderContext from "../../../../../context/OrderContext";
 
 export default function AddForm() {
   const [formData, setFormData] = useState({
+    id: new Date().getTime(),
     title: "",
     price: "",
     imageSource: "",
   });
   const [loading, setLoading] = useState(false);
+  const { handleAddProduct } = useContext(OrderContext);
 
   useEffect(() => {
     let timeoutId;
@@ -37,33 +39,27 @@ export default function AddForm() {
     }));
   };
 
-  function AddProductCard(e) {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setLoading(true);
 
+    // Affiche l'image "comingSoon" si auncune url spécifié
     if (formData.imageSource === "") {
       formData.imageSource = `${comingSoon}`;
     }
 
-    const newProduct = {
-      id: Math.random(),
-      ...formData,
-      quantity: 0,
-      isAvailable: true,
-      isAdvertised: false,
-    };
+    handleAddProduct(formData);
 
-    fakeMenu.SMALL.push(newProduct);
-
+    // Vide le formulaire
     setFormData({
       title: "",
       price: "",
       imageSource: "",
     });
-  }
+  };
 
   return (
-    <AddFormStyled>
+    <AddFormStyled onSubmit={handleSubmit}>
       <div className="picture">
         {formData.imageSource ? (
           <img src={formData.imageSource} alt={formData.title} />
@@ -71,7 +67,7 @@ export default function AddForm() {
           <p>Aucune image</p>
         )}
       </div>
-      <form onSubmit={AddProductCard}>
+      <div className="input">
         <TextInput
           Icon={<FaHamburger />}
           placeholder={"Nom du produit (ex: Super Burger)"}
@@ -109,12 +105,12 @@ export default function AddForm() {
             </span>
           )}
         </div>
-      </form>
+      </div>
     </AddFormStyled>
   );
 }
 
-const AddFormStyled = styled.div`
+const AddFormStyled = styled.form`
   display: flex;
   padding-top: 30px;
   padding-left: 70px;
@@ -141,7 +137,7 @@ const AddFormStyled = styled.div`
     }
   }
 
-  form {
+  .input {
     display: flex;
     flex-direction: column;
 

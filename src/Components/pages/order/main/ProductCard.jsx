@@ -12,14 +12,14 @@ export default function ProductCard({
   title,
   price,
   id,
-  HandleDelete,
+  handleDelete,
 }) {
   const { isModeAdmin } = useContext(OrderContext);
 
   return (
     <ProductCardStyled className={className}>
       {isModeAdmin && (
-        <TiDelete className="icon" onClick={() => HandleDelete(id)} />
+        <TiDelete className="icon" onClick={() => handleDelete(id)} />
       )}
       <img src={imageSource} alt={title} />
       <div className="info-text">
