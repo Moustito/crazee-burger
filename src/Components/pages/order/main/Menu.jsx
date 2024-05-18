@@ -5,6 +5,8 @@ import NoProducts from "./NoProducts";
 import OrderContext from "../../../../context/OrderContext";
 import comingSoon from "../../../../assets/images/coming-soon.png";
 
+const DEFAULT_IMAGE = `${comingSoon}`;
+
 export default function Menu() {
   const { menu } = useContext(OrderContext);
   const { handleDelete } = useContext(OrderContext);
@@ -24,7 +26,7 @@ export default function Menu() {
           key={id}
           id={id}
           title={title}
-          imageSource={imageSource === "" ? `${comingSoon}` : imageSource}
+          imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
           price={price}
           handleDelete={handleDelete}
         />
