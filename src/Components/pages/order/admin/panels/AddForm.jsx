@@ -4,7 +4,7 @@ import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { FiCheck } from "react-icons/fi";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 
 const EMPTY_PRODUCT = {
@@ -15,21 +15,8 @@ const EMPTY_PRODUCT = {
 
 export default function AddForm() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const [loading, setLoading] = useState(false);
+  const [isSubmited, setIsSubmited] = useState(false);
   const { handleAddProduct } = useContext(OrderContext);
-
-  useEffect(() => {
-    let timeoutId;
-    if (loading) {
-      timeoutId = setTimeout(() => {
-        setLoading(false);
-      }, 2000);
-    }
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [loading]);
 
   const handleChange = (e) => {
     const { name, value } = e.target; // Destructuration de l'objet "e.target" pour obtenir name et value
@@ -39,9 +26,15 @@ export default function AddForm() {
     });
   };
 
+  const displaySuccesMessage = () => {
+    setIsSubmited(true);
+    setTimeout(() => {
+      setIsSubmited(false);
+    }, 2000);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    setLoading(true);
 
     const newProductToAdd = {
       ...newProduct,
@@ -49,9 +42,10 @@ export default function AddForm() {
     };
 
     handleAddProduct(newProductToAdd);
-
     // Vide le formulaire
     setNewProduct(EMPTY_PRODUCT);
+
+    displaySuccesMessage();
   };
 
   return (
@@ -91,10 +85,10 @@ export default function AddForm() {
           name={"price"}
         />
         <div>
-          <button className={loading && "activeButton"} type="submit">
+          <button className={isSubmited && "activeButton"} type="submit">
             Ajouter un nouveau produit au menu
           </button>
-          {loading && (
+          {isSubmited && (
             <span>
               <FiCheck className="icon" />
               <p>Ajouté avec succès !</p>
