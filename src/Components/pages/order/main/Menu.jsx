@@ -8,8 +8,7 @@ import comingSoon from "../../../../assets/images/coming-soon.png";
 const DEFAULT_IMAGE = `${comingSoon}`;
 
 export default function Menu() {
-  const { menu } = useContext(OrderContext);
-  const { handleDelete } = useContext(OrderContext);
+  const { menu, handleDelete } = useContext(OrderContext);
 
   if (menu.length === 0) {
     return (
@@ -28,7 +27,7 @@ export default function Menu() {
           title={title}
           imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
           price={price}
-          handleDelete={handleDelete}
+          onDelete={() => handleDelete(id)}
         />
       ))}
     </MenuStyled>

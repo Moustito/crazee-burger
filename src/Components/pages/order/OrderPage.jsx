@@ -20,9 +20,9 @@ export default function OrderPage() {
     setMenu(menuUpdated);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (productId) => {
     const menuCopy = [...menu];
-    const menuFiltre = menuCopy.filter((menuList) => id !== menuList.id);
+    const menuFiltre = menuCopy.filter((product) => productId !== product.id);
     setMenu((fakeMenu.SMALL = menuFiltre));
   };
 
