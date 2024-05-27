@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 import { theme } from "../../theme";
 
-export default function PrimaryButton({ className, label, Icon }) {
+export default function PrimaryButton({ className, label, Icon, onClick }) {
   return (
-    <PrimaryButtonStyled className={className}>
+    <PrimaryButtonStyled className={className} onClick={onClick}>
       <span>{label}</span>
-      {Icon && Icon}
+      {Icon && <div className="icon">{Icon}</div>}
     </PrimaryButtonStyled>
   );
 }
@@ -46,5 +46,13 @@ const PrimaryButtonStyled = styled.button`
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: ${theme.fonts.size.P0};
+    margin-left: 10px;
   }
 `;

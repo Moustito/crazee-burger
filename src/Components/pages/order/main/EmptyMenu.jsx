@@ -4,7 +4,7 @@ import styled from "styled-components";
 import PrimaryButton from "../../../reusable-ui/PrimaryButton";
 import { fakeMenu } from "../../../../fakeData/fakeMenu";
 
-export default function EmptyMenu() {
+export default function NoProducts() {
   const { isModeAdmin, setMenu } = useContext(OrderContext);
 
   const resetMenu = () => {
@@ -13,27 +13,26 @@ export default function EmptyMenu() {
 
   if (isModeAdmin) {
     return (
-      <EmptyMenuStyled>
+      <NoProductsStyled>
         <p className="title">Le menu est vide ?</p>
         <p>Cliquez ci-dessous pour le réinitialiser</p>
-        <button onClick={resetMenu}>Générer de nouveaux produits</button>
         <PrimaryButton
           label={"Générer de nouveaux produits"}
           onClick={resetMenu}
         />
-      </EmptyMenuStyled>
+      </NoProductsStyled>
     );
   }
   return (
-    <EmptyMenuStyled>
+    <NoProductsStyled>
       <p className="title">Victime de notre succès ! :D</p>
       <p>De nouvelles recettes sont en cours de préparation.</p>
       <p>À très vite !</p>
-    </EmptyMenuStyled>
+    </NoProductsStyled>
   );
 }
 
-const EmptyMenuStyled = styled.div`
+const NoProductsStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
