@@ -11,6 +11,7 @@ export default createContext({
   setCurrentTabSelected: () => {},
 
   menu : [],
+  setMenu: () => {},
   handleAddProduct: () => {},
   handleDelete: () => {},
 })

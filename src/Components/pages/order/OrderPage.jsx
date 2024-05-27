@@ -22,8 +22,8 @@ export default function OrderPage() {
 
   const handleDelete = (productId) => {
     const menuCopy = [...menu];
-    const menuFiltre = menuCopy.filter((product) => productId !== product.id);
-    setMenu((fakeMenu.SMALL = menuFiltre));
+    const menuUpdate = menuCopy.filter((product) => productId !== product.id);
+    setMenu(menuUpdate);
   };
 
   const orderContextValue = {
@@ -34,6 +34,7 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     menu,
+    setMenu,
     handleAddProduct,
     handleDelete,
   };

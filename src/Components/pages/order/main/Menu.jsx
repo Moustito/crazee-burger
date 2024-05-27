@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import ProductCard from "./ProductCard";
 import { useContext } from "react";
-import NoProducts from "./NoProducts";
+import EmptyMenu from "./EmptyMenu";
 import OrderContext from "../../../../context/OrderContext";
 import comingSoon from "../../../../assets/images/coming-soon.png";
 
@@ -13,7 +13,7 @@ export default function Menu() {
   if (menu.length === 0) {
     return (
       <MenuStyled>
-        <NoProducts />
+        <EmptyMenu />
       </MenuStyled>
     );
   }

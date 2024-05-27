@@ -34,6 +34,7 @@ const PrimaryButtonStyled = styled.button`
     color: ${theme.colors.primary};
     border: 1px solid ${theme.colors.primary};
     transition: all 200ms ease-out;
+    cursor: pointer;
   }
 
   &:active {
