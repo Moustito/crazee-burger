@@ -57,34 +57,34 @@ export default function AddForm() {
           <p>Aucune image</p>
         )}
       </div>
-      <div className="input">
+      <div>
         <TextInput
           Icon={<FaHamburger />}
           placeholder={"Nom du produit (ex: Super Burger)"}
-          className={"AdminForm"}
           onChange={handleChange}
           value={newProduct.title}
           name={"title"}
+          version="minimalist"
         />
         <TextInput
           Icon={<BsFillCameraFill />}
           placeholder={
             "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           }
-          className={"AdminForm"}
           onChange={handleChange}
           value={newProduct.imageSource}
           name={"imageSource"}
+          version="minimalist"
         />
         <TextInput
           Icon={<MdOutlineEuro />}
           placeholder={"Prix"}
-          className={"AdminForm"}
           onChange={handleChange}
           value={newProduct.price ? newProduct.price : ""}
           name={"price"}
+          version="minimalist"
         />
-        <div>
+        <div className="button-and-SuccessSpan">
           <button className={isSubmited && "activeButton"} type="submit">
             Ajouter un nouveau produit au menu
           </button>
@@ -127,64 +127,41 @@ const AddFormStyled = styled.form`
     }
   }
 
-  .input {
+  .button-and-SuccessSpan {
     display: flex;
-    flex-direction: column;
-
-    margin-left: 20px;
-
-    div {
+    button {
+      width: 285px; // 275px
       height: 35px;
-      width: 650px;
+      padding: 10px 30px;
 
-      margin: 0;
-      margin-bottom: 8px;
-      padding: 8px, 16px, 8px, 24px;
+      border: 1px solid #60bd4f;
+      border-radius: 5px;
 
-      background-color: #f5f5f7;
-      color: #747b91;
+      color: white;
+      background-color: #60bd4f;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
-    .AdminForm {
-      margin-left: 10px;
-      background-color: transparent;
+    .activeButton {
+      color: #60bd4f;
+      background-color: white;
     }
-    div {
+
+    span {
       display: flex;
+      justify-content: center;
+      align-items: center;
 
-      button {
-        width: 285px; // 275px
-        height: 35px;
-        padding: 10px 30px;
+      color: #60bd4f;
+
+      .icon {
+        margin-left: 15px;
+        margin-right: 5px;
 
         border: 1px solid #60bd4f;
-        border-radius: 5px;
-
-        color: white;
-        background-color: #60bd4f;
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
-      .activeButton {
-        color: #60bd4f;
-        background-color: white;
-      }
-
-      span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        color: #60bd4f;
-
-        .icon {
-          margin-left: 15px;
-          margin-right: 5px;
-
-          border: 1px solid #60bd4f;
-          border-radius: 50%;
-        }
+        border-radius: 50%;
       }
     }
   }
