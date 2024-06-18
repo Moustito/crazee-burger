@@ -9,6 +9,7 @@ import OrderContext from "../../../../../context/OrderContext";
 import PrimaryButton from "../../../../reusable-ui/PrimaryButton";
 import { theme } from "../../../../../theme";
 import ImagePreview from "./ImagePreview";
+import SubmitMessage from "./SubmitMessage";
 
 export const EMPTY_PRODUCT = {
   title: "",
@@ -90,12 +91,7 @@ export default function AddForm() {
             className={isSubmited && "activeButton"}
             version="succes"
           />
-          {isSubmited && (
-            <span className="succesMessage">
-              <FiCheck className="icon" />
-              <span>Ajouté avec succès !</span>
-            </span>
-          )}
+          {isSubmited && <SubmitMessage />}
         </div>
       </div>
     </AddFormStyled>
@@ -114,22 +110,6 @@ const AddFormStyled = styled.form`
       color: ${theme.colors.success};
       border: 1px solid ${theme.colors.success};
       background-color: transparent;
-    }
-    .succesMessage {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      color: ${theme.colors.success};
-
-      .icon {
-        margin-left: 15px;
-        margin-right: 5px;
-
-        border: 1px solid ${theme.colors.success};
-        border-radius: 50%;
-      }
     }
   }
 `;
