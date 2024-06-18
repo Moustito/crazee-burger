@@ -6,18 +6,21 @@ import { theme } from "../../../theme";
 import OrderContext from "../../../context/OrderContext";
 import { useState } from "react";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "./admin/panels/AddForm";
 
 export default function OrderPage() {
   const { username } = useParams();
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.SMALL);
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   const handleAddProduct = (newProduct) => {
     const menuCopy = [...menu];
     const menuUpdated = [newProduct, ...menuCopy];
     setMenu(menuUpdated);
+    console.log(menu);
   };
 
   const handleDelete = (productId) => {
@@ -37,6 +40,8 @@ export default function OrderPage() {
     setMenu,
     handleAddProduct,
     handleDelete,
+    newProduct,
+    setNewProduct,
   };
 
   return (

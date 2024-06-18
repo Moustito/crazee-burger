@@ -9,19 +9,34 @@ import OrderContext from "../../../../../context/OrderContext";
 import PrimaryButton from "../../../../reusable-ui/PrimaryButton";
 import { theme } from "../../../../../theme";
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
   title: "",
   price: 0,
   imageSource: "",
 };
 
 export default function AddForm() {
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [isSubmited, setIsSubmited] = useState(false);
-  const { handleAddProduct } = useContext(OrderContext);
+  const { handleAddProduct, newProduct, setNewProduct } =
+    useContext(OrderContext);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target; // Destructuration de l'objet "e.target" pour obtenir name et value
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const newProductToAdd = {
+      ...newProduct,
+      id: crypto.randomUUID(),
+    };
+
+    handleAddProduct(newProductToAdd);
+    // Vide le formulaire
+    setNewProduct(EMPTY_PRODUCT);
+
+    displaySuccesMessage();
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target; // Destructuration de l'objet "e.target" pour obtenir name et value
     setNewProduct({
       ...newProduct,
       [name]: value,
@@ -33,21 +48,6 @@ export default function AddForm() {
     setTimeout(() => {
       setIsSubmited(false);
     }, 2000);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const newProductToAdd = {
-      ...newProduct,
-      id: crypto.randomUUID,
-    };
-
-    handleAddProduct(newProductToAdd);
-    // Vide le formulaire
-    setNewProduct(EMPTY_PRODUCT);
-
-    displaySuccesMessage();
   };
 
   return (
@@ -86,20 +86,19 @@ export default function AddForm() {
           name={"price"}
           version="minimalist"
         />
-        <div className="button-and-SuccesSpan">
+        <div className="button-and-succesMessage">
           <PrimaryButton
             label={"Ajouter un nouveau produit au menu"}
             className={isSubmited && "activeButton"}
             version="succes"
-            type="submit"
           />
           {/* <button className={isSubmited && "activeButton"} type="submit">
             Ajouter un nouveau produit au menu
           </button> */}
           {isSubmited && (
-            <span className="succes">
+            <span className="succesMessage">
               <FiCheck className="icon" />
-              <p>Ajouté avec succès !</p>
+              <span>Ajouté avec succès !</span>
             </span>
           )}
         </div>
@@ -135,7 +134,7 @@ const AddFormStyled = styled.form`
     }
   }
 
-  .button-and-SuccesSpan {
+  .button-and-succesMessage {
     display: flex;
 
     .activeButton {
@@ -143,7 +142,7 @@ const AddFormStyled = styled.form`
       border: 1px solid ${theme.colors.success};
       background-color: transparent;
     }
-    .succes {
+    .succesMessage {
       width: 100%;
       display: flex;
       justify-content: center;

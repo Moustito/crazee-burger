@@ -61,7 +61,7 @@ const extraStyleNormal = css`
 `;
 
 const extraStyleMinimalist = css`
-  width: 180%;
+  width: 170%;
   background-color: ${theme.colors.background_white};
   padding: 8px 16px;
   color: ${theme.colors.greyBlue};
