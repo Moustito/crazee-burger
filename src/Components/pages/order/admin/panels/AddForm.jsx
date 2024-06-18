@@ -8,6 +8,7 @@ import { useContext, useState } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import PrimaryButton from "../../../../reusable-ui/PrimaryButton";
 import { theme } from "../../../../../theme";
+import ImagePreview from "./ImagePreview";
 
 export const EMPTY_PRODUCT = {
   title: "",
@@ -52,13 +53,10 @@ export default function AddForm() {
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="imagePreview">
-        {newProduct.imageSource ? (
-          <img src={newProduct.imageSource} alt={newProduct.title} />
-        ) : (
-          <p>Aucune image</p>
-        )}
-      </div>
+      <ImagePreview
+        imageSource={newProduct.imageSource}
+        title={newProduct.title}
+      />
       <div>
         <TextInput
           Icon={<FaHamburger />}
@@ -92,9 +90,6 @@ export default function AddForm() {
             className={isSubmited && "activeButton"}
             version="succes"
           />
-          {/* <button className={isSubmited && "activeButton"} type="submit">
-            Ajouter un nouveau produit au menu
-          </button> */}
           {isSubmited && (
             <span className="succesMessage">
               <FiCheck className="icon" />
@@ -111,28 +106,6 @@ const AddFormStyled = styled.form`
   display: flex;
   padding-top: 30px;
   padding-left: 70px;
-
-  .imagePreview {
-    width: 215px;
-    height: 120px;
-    overflow: hidden;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: 1px solid ${theme.colors.greyLight};
-    border-radius: 5px;
-
-    color: ${theme.colors.greySemiDark};
-    background-color: ${theme.colors.greyLight};
-    font-size: 16px;
-
-    img {
-      max-width: 215px;
-      max-height: 120px;
-    }
-  }
 
   .button-and-succesMessage {
     display: flex;
