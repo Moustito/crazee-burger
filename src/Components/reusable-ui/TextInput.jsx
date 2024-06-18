@@ -49,6 +49,7 @@ const extraStyleNormal = css`
   background-color: ${theme.colors.white};
   padding: 18px 28px;
   color: ${theme.colors.greySemiDark};
+  margin-bottom: 10px;
 
   input {
     color: ${theme.colors.dark};

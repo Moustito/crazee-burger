@@ -1,9 +1,19 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 import { theme } from "../../theme";
 
-export default function PrimaryButton({ className, label, Icon, onClick }) {
+export default function PrimaryButton({
+  className,
+  label,
+  Icon,
+  onClick,
+  version = "normal",
+}) {
   return (
-    <PrimaryButtonStyled className={className} onClick={onClick}>
+    <PrimaryButtonStyled
+      className={className}
+      onClick={onClick}
+      version={version}
+    >
       <span>{label}</span>
       {Icon && <div className="icon">{Icon}</div>}
     </PrimaryButtonStyled>
@@ -37,7 +47,7 @@ const PrimaryButtonStyled = styled.button`
     cursor: pointer;
   }
 
-  &:active {
+  &:active:not(:disabled) {
     color: white;
     background-color: ${theme.colors.primary};
     border: 1px solid ${theme.colors.primary};
@@ -55,4 +65,26 @@ const PrimaryButtonStyled = styled.button`
     font-size: ${theme.fonts.size.P0};
     margin-left: 10px;
   }
+
+  ${({ version }) => extraStyle[version]}
 `;
+
+const extraStyleSuccess = css`
+  height: 35px;
+  background: ${theme.colors.success};
+  border: 1px solid ${theme.colors.success};
+
+  &:hover:not(:disabled) {
+    color: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
+  }
+  &:active:not(:disabled) {
+    color: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
+    background-color: transparent;
+  }
+`;
+
+const extraStyle = {
+  succes: extraStyleSuccess,
+};

@@ -6,6 +6,8 @@ import { MdOutlineEuro } from "react-icons/md";
 import { FiCheck } from "react-icons/fi";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../context/OrderContext";
+import PrimaryButton from "../../../../reusable-ui/PrimaryButton";
+import { theme } from "../../../../../theme";
 
 const EMPTY_PRODUCT = {
   title: "",
@@ -84,12 +86,18 @@ export default function AddForm() {
           name={"price"}
           version="minimalist"
         />
-        <div className="button-and-SuccessSpan">
-          <button className={isSubmited && "activeButton"} type="submit">
+        <div className="button-and-SuccesSpan">
+          <PrimaryButton
+            label={"Ajouter un nouveau produit au menu"}
+            className={isSubmited && "activeButton"}
+            version="succes"
+            type="submit"
+          />
+          {/* <button className={isSubmited && "activeButton"} type="submit">
             Ajouter un nouveau produit au menu
-          </button>
+          </button> */}
           {isSubmited && (
-            <span>
+            <span className="succes">
               <FiCheck className="icon" />
               <p>Ajouté avec succès !</p>
             </span>
@@ -114,11 +122,11 @@ const AddFormStyled = styled.form`
     justify-content: center;
     align-items: center;
 
-    border: 1px solid #e4e5e9;
+    border: 1px solid ${theme.colors.greyLight};
     border-radius: 5px;
 
-    color: #93a2b1;
-    background-color: #e4e5e9;
+    color: ${theme.colors.greySemiDark};
+    background-color: ${theme.colors.greyLight};
     font-size: 16px;
 
     img {
@@ -127,40 +135,27 @@ const AddFormStyled = styled.form`
     }
   }
 
-  .button-and-SuccessSpan {
+  .button-and-SuccesSpan {
     display: flex;
-    button {
-      width: 285px; // 275px
-      height: 35px;
-      padding: 10px 30px;
 
-      border: 1px solid #60bd4f;
-      border-radius: 5px;
-
-      color: white;
-      background-color: #60bd4f;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
     .activeButton {
-      color: #60bd4f;
-      background-color: white;
+      color: ${theme.colors.success};
+      border: 1px solid ${theme.colors.success};
+      background-color: transparent;
     }
-
-    span {
+    .succes {
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
 
-      color: #60bd4f;
+      color: ${theme.colors.success};
 
       .icon {
         margin-left: 15px;
         margin-right: 5px;
 
-        border: 1px solid #60bd4f;
+        border: 1px solid ${theme.colors.success};
         border-radius: 50%;
       }
     }
