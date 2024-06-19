@@ -34,12 +34,24 @@ const ProductCardStyled = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  border-radius: ${theme.borderRadius.extraRound};
+
   background: ${theme.colors.white};
+  border: 1px solid transparent;
+  border-radius: ${theme.borderRadius.extraRound};
   box-shadow: ${theme.shadows.medium};
+
   width: 240px;
   height: 330px;
   padding: 50px 20px 25px 20px;
+
+  &:hover {
+    cursor: pointer;
+
+    box-shadow: 0px 0px 8px 0px #ff9a23;
+
+    transform: scale(1.1);
+    transition: all 0.5s linear;
+  }
 
   .icon {
     position: absolute;
