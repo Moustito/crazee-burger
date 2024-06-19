@@ -1,19 +1,33 @@
 import styled from "styled-components";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import ProductCard from "./ProductCard";
-import { useState } from "react";
+import { useContext } from "react";
+import EmptyMenu from "./EmptyMenu";
+import OrderContext from "../../../../context/OrderContext";
+import comingSoon from "../../../../assets/images/coming-soon.png";
+
+const DEFAULT_IMAGE = `${comingSoon}`;
 
 export default function Menu() {
-  const [products, setProducts] = useState(fakeMenu2);
+  const { menu, handleDelete } = useContext(OrderContext);
+
+  if (menu.length === 0) {
+    return (
+      <MenuStyled>
+        <EmptyMenu />
+      </MenuStyled>
+    );
+  }
 
   return (
     <MenuStyled>
-      {products.map((product) => (
+      {menu.map(({ id, title, imageSource, price }) => (
         <ProductCard
-          key={product.id}
-          title={product.title}
-          imageSource={product.imageSource}
-          price={product.price}
+          key={id}
+          id={id}
+          title={title}
+          imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
+          price={price}
+          onDelete={() => handleDelete(id)}
         />
       ))}
     </MenuStyled>
