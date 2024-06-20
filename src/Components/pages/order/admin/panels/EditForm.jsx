@@ -1,43 +1,49 @@
-import { HiCursorClick } from "react-icons/hi";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import OrderContext from "../../../../../context/OrderContext";
+import HintMessage from "./HintMessage";
+import ImagePreview from "./ImagePreview";
+import TextInput from "../../../../reusable-ui/TextInput";
+import { getInputTextsConfig } from "./inputTextConfig";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 export default function EditForm() {
   const { productSelected } = useContext(OrderContext);
+  const [productBeingEdited, setProductBeingEdited] = useState(EMPTY_PRODUCT);
+
+  const inputTexts = getInputTextsConfig(productSelected);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setProductBeingEdited({
+      ...productBeingEdited,
+      [name]: value,
+    });
+  };
 
   return (
     <EditFormStyled>
-      {productSelected && productSelected.title}
-      <div className="unselectedProduct">
-        <span>Cliquer sur un produit pour le modifier</span>
-        <HiCursorClick className="icon" />
+      <ImagePreview
+        imageSource={productSelected.imageSource}
+        title={productSelected.title}
+      />
+      <div className="InputFields">
+        {inputTexts.map((input) => (
+          <TextInput
+            {...input}
+            key={input.id}
+            onChange={handleChange}
+            version="minimalist"
+          />
+        ))}
       </div>
     </EditFormStyled>
   );
 }
 
-const EditFormStyled = styled.div`
-  .unselectedProduct {
-    display: flex;
-    align-items: center;
-    padding: 80px 70px;
-
-    color: ${theme.colors.greyBlue};
-
-    span {
-      font-family: Amatic SC;
-      font-size: ${theme.fonts.size.P3};
-      font-weight: ${theme.fonts.weights.regular};
-      line-height: 30.26px;
-    }
-
-    .icon {
-      width: 24px;
-      height: 24px;
-
-      margin-left: 10px;
-    }
-  }
+const EditFormStyled = styled.form`
+  display: flex;
+  padding-top: 30px;
+  padding-left: 70px;
 `;
