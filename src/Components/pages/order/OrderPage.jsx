@@ -18,15 +18,30 @@ export default function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
 
   const handleAddProduct = (newProduct) => {
-    const menuCopy = [...menu];
+    const menuCopy = JSON.parse(JSON.stringify(menu));
     const menuUpdated = [newProduct, ...menuCopy];
     setMenu(menuUpdated);
   };
 
   const handleDelete = (productId) => {
-    const menuCopy = [...menu];
+    const menuCopy = JSON.parse(JSON.stringify(menu));
     const menuUpdate = menuCopy.filter((product) => productId !== product.id);
     setMenu(menuUpdate);
+  };
+
+  const handleEdit = (productBeingEdited) => {
+    // Deep Clone
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+
+    // Manip sur le State
+    const indexOfProductToEdit = menu.findIndex(
+      (menuProduct) => menuProduct.id === productBeingEdited.id
+    );
+
+    menuCopy[indexOfProductToEdit] = productBeingEdited;
+
+    // Update du State
+    setMenu(menuCopy);
   };
 
   const orderContextValue = {
@@ -44,6 +59,7 @@ export default function OrderPage() {
     setNewProduct,
     productSelected,
     setProductSelected,
+    handleEdit,
   };
 
   return (
