@@ -12,11 +12,12 @@ export default function ProductCard({
   title,
   price,
   onDelete,
+  onClick,
 }) {
   const { isModeAdmin } = useContext(OrderContext);
 
   return (
-    <ProductCardStyled className={className}>
+    <ProductCardStyled className={className} onClick={onClick}>
       {isModeAdmin && <TiDelete className="icon" onClick={onDelete} />}
       <img src={imageSource} alt={title} />
       <div className="info-text">
@@ -44,14 +45,14 @@ const ProductCardStyled = styled.div`
   height: 330px;
   padding: 50px 20px 25px 20px;
 
-  &:hover {
+  /* &:hover {
     cursor: pointer;
 
     box-shadow: 0px 0px 8px 0px #ff9a23;
 
     transform: scale(1.1);
     transition: all 0.5s linear;
-  }
+  } */
 
   .icon {
     position: absolute;

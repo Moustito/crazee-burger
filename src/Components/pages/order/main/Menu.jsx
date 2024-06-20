@@ -8,7 +8,14 @@ import comingSoon from "../../../../assets/images/coming-soon.png";
 const DEFAULT_IMAGE = `${comingSoon}`;
 
 export default function Menu() {
-  const { menu, handleDelete } = useContext(OrderContext);
+  const { menu, handleDelete, setProductSelected } = useContext(OrderContext);
+
+  const handleClick = (idProductClicked) => {
+    const productSelected = menu.find(
+      (product) => product.id === idProductClicked
+    );
+    setProductSelected(productSelected);
+  };
 
   if (menu.length === 0) {
     return (
@@ -28,6 +35,7 @@ export default function Menu() {
           imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
           price={price}
           onDelete={() => handleDelete(id)}
+          onClick={() => handleClick(id)}
         />
       ))}
     </MenuStyled>

@@ -7,12 +7,7 @@ import { theme } from "../../../../../theme";
 import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
 import { getInputTextsConfig } from "./inputTextConfig";
-
-export const EMPTY_PRODUCT = {
-  title: "",
-  price: 0,
-  imageSource: "",
-};
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 export default function AddForm() {
   const [isSubmited, setIsSubmited] = useState(false);

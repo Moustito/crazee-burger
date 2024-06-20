@@ -1,4 +1,4 @@
-import { createContext } from "react"
+import { createContext } from "react";
 
 export default createContext({
   isModeAdmin: false,
@@ -10,11 +10,14 @@ export default createContext({
   currentTabSelected: false,
   setCurrentTabSelected: () => {},
 
-  menu : [],
+  menu: [],
   setMenu: () => {},
   handleAddProduct: () => {},
   handleDelete: () => {},
 
-  newProduct : [],
+  newProduct: {},
   setNewProduct: () => {},
-})
+
+  productSelected: {},
+  setProductSelected: () => {},
+});
