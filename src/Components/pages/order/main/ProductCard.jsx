@@ -41,6 +41,7 @@ const ProductCardStyled = styled.div`
   border-radius: ${theme.borderRadius.extraRound};
   box-shadow: ${theme.shadows.medium};
 
+  box-sizing: border-box;
   width: 240px;
   height: 330px;
   padding: 50px 20px 25px 20px;
