@@ -32,7 +32,7 @@ export default function Card({
           <h3 className="title">{title}</h3>
           <div className="description">
             <p className="price">{formatPrice(price)}</p>
-            <PrimaryButton label={"Ajouter"} className={"add-button"} />
+            <PrimaryButton label={"Ajouter"} className={"add-button"} onClick={(event) => event.stopPropagation()} />
           </div>
         </div>
       </div>
