@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ProductCard from "./ProductCard";
+import Card from "./Card";
 import { useContext } from "react";
 import EmptyMenu from "./EmptyMenu";
 import OrderContext from "../../../../context/OrderContext";
@@ -8,7 +8,8 @@ import comingSoon from "../../../../assets/images/coming-soon.png";
 const DEFAULT_IMAGE = `${comingSoon}`;
 
 export default function Menu() {
-  const { menu, handleDelete, setProductSelected } = useContext(OrderContext);
+  const { menu, handleDelete, setProductSelected, isModeAdmin } =
+    useContext(OrderContext);
 
   const handleClick = (idProductClicked) => {
     const productClikedOn = menu.find(
@@ -28,7 +29,7 @@ export default function Menu() {
   return (
     <MenuStyled>
       {menu.map(({ id, title, imageSource, price }) => (
-        <ProductCard
+        <Card
           key={id}
           id={id}
           title={title}
@@ -36,6 +37,7 @@ export default function Menu() {
           price={price}
           onDelete={() => handleDelete(id)}
           onClick={() => handleClick(id)}
+          isHoverable={isModeAdmin}
         />
       ))}
     </MenuStyled>
