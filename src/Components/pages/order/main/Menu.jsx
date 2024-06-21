@@ -4,12 +4,18 @@ import { useContext } from "react";
 import EmptyMenu from "./EmptyMenu";
 import OrderContext from "../../../../context/OrderContext";
 import comingSoon from "../../../../assets/images/coming-soon.png";
+import { checkIfProductIsClicked } from "./helper";
 
 const DEFAULT_IMAGE = `${comingSoon}`;
 
 export default function Menu() {
-  const { menu, handleDelete, setProductSelected, isModeAdmin } =
-    useContext(OrderContext);
+  const {
+    menu,
+    handleDelete,
+    productSelected,
+    setProductSelected,
+    isModeAdmin,
+  } = useContext(OrderContext);
 
   const handleClick = (idProductClicked) => {
     const productClikedOn = menu.find(
@@ -38,6 +44,7 @@ export default function Menu() {
           onDelete={() => handleDelete(id)}
           onClick={() => handleClick(id)}
           isHoverable={isModeAdmin}
+          isSelected={checkIfProductIsClicked(id, productSelected.id)}
         />
       ))}
     </MenuStyled>

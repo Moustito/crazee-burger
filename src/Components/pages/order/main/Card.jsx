@@ -14,6 +14,7 @@ export default function Card({
   onDelete,
   onClick,
   isHoverable,
+  isSelected,
 }) {
   const { isModeAdmin } = useContext(OrderContext);
 
@@ -22,6 +23,7 @@ export default function Card({
       className={className}
       onClick={onClick}
       isHoverable={isHoverable}
+      isSelected={isSelected}
     >
       <div className="card">
         {isModeAdmin && <TiDelete className="icon" onClick={onDelete} />}
@@ -39,9 +41,10 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-  ${(props) => props.isHoverable && isHoverableStyle}
+  ${({ isHoverable }) => isHoverable && isHoverableStyle}
 
   height: 330px;
+
   .card {
     display: flex;
     position: relative;
@@ -121,6 +124,9 @@ const CardStyled = styled.div`
         }
       }
     }
+
+    ${({ isHoverable, isSelected }) =>
+      isHoverable && isSelected && isSelectedStyle}
   }
 `;
 
@@ -132,5 +138,61 @@ const isHoverableStyle = css`
 
     transform: scale(1.05);
     transition: ease-out 0.4s;
+  }
+`;
+
+const isSelectedStyle = css`
+  background-color: ${theme.colors.primary};
+
+  .icon {
+    color: ${theme.colors.white};
+
+    :active {
+      color: ${theme.colors.white};
+    }
+  }
+
+  .info-text {
+    .description {
+      .price {
+        color: ${theme.colors.white};
+      }
+    }
+  }
+
+  .add-button {
+    color: ${theme.colors.primary};
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.white};
+    transition: all 200ms ease-out;
+    &:hover {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.white};
+      transition: all 200ms ease-out;
+    }
+    &:active {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+    }
+    &.is-disabled {
+      opacity: 50%;
+      cursor: not-allowed;
+      z-index: 2;
+    }
+    &.with-focus {
+      border: 1px solid ${theme.colors.white};
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      &:hover {
+        color: ${theme.colors.white};
+        background-color: ${theme.colors.primary};
+        border: 1px solid ${theme.colors.white};
+      }
+      &:active {
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+      }
+    }
   }
 `;
