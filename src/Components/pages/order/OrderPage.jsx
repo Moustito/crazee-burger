@@ -7,6 +7,7 @@ import OrderContext from "../../../context/OrderContext";
 import { useState } from "react";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
+import { deepClone } from "../../../utils/array";
 
 export default function OrderPage() {
   const { username } = useParams();
@@ -18,7 +19,7 @@ export default function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
 
   const handleAddProduct = (newProduct) => {
-    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const menuCopy = deepClone(menu);
     const menuUpdated = [newProduct, ...menuCopy];
     setMenu(menuUpdated);
   };
