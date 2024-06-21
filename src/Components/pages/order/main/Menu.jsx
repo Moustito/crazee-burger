@@ -11,10 +11,10 @@ export default function Menu() {
   const { menu, handleDelete, setProductSelected } = useContext(OrderContext);
 
   const handleClick = (idProductClicked) => {
-    const productSelected = menu.find(
+    const productClikedOn = menu.find(
       (product) => product.id === idProductClicked
     );
-    setProductSelected(productSelected);
+    setProductSelected(productClikedOn);
   };
 
   if (menu.length === 0) {
