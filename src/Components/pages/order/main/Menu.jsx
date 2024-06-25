@@ -5,6 +5,7 @@ import EmptyMenu from "./EmptyMenu";
 import OrderContext from "../../../../context/OrderContext";
 import comingSoon from "../../../../assets/images/coming-soon.png";
 import { checkIfProductIsClicked } from "./helper";
+import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 const DEFAULT_IMAGE = `${comingSoon}`;
 
@@ -17,23 +18,27 @@ export default function Menu() {
     isModeAdmin,
     setIsCollapsed,
     setCurrentTabSelected,
+    titleEditRef,
   } = useContext(OrderContext);
 
-  const handleClick = (idProductClicked) => {
+  const handleClick = async (idProductClicked) => {
     if (!isModeAdmin) return;
 
-    setIsCollapsed(false);
-    setCurrentTabSelected("edit");
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
 
     const productClikedOn = menu.find(
       (product) => product.id === idProductClicked
     );
-    setProductSelected(productClikedOn);
+    await setProductSelected(productClikedOn);
+
+    titleEditRef.current.focus();
   };
 
   const handleCardDelete = (event, id) => {
     event.stopPropagation();
     handleDelete(id);
+    setProductSelected(EMPTY_PRODUCT);
   };
 
   if (menu.length === 0) {

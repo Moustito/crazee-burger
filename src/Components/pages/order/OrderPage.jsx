@@ -4,7 +4,7 @@ import Navbar from "./navbar/Navbar";
 import Main from "./main/Main";
 import { theme } from "../../../theme";
 import OrderContext from "../../../context/OrderContext";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { deepClone } from "../../../utils/array";
@@ -17,6 +17,7 @@ export default function OrderPage() {
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
+  const titleEditRef = useRef();
 
   const handleAddProduct = (newProduct) => {
     const menuCopy = deepClone(menu);
@@ -61,6 +62,7 @@ export default function OrderPage() {
     productSelected,
     setProductSelected,
     handleEdit,
+    titleEditRef,
   };
 
   return (
