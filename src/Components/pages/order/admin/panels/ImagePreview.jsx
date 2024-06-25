@@ -26,7 +26,7 @@ const ImagePreviewStyled = styled.div`
   border-radius: 5px;
 
   color: ${theme.colors.greySemiDark};
-  background-color: ${theme.colors.greyLight};
+  background-color: ${theme.colors.white};
   font-size: 16px;
 
   img {

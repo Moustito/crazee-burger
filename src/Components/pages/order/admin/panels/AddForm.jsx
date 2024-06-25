@@ -52,7 +52,7 @@ export default function AddForm() {
         imageSource={newProduct.imageSource}
         title={newProduct.title}
       />
-      <div className="InputFields">
+      <div className="input-fields">
         {inputTexts.map((input) => (
           <TextInput
             {...input}
@@ -78,6 +78,13 @@ const AddFormStyled = styled.form`
   display: flex;
   padding-top: 30px;
   padding-left: 70px;
+  gap: 20px;
+
+  .input-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 
   .submit {
     display: flex;
