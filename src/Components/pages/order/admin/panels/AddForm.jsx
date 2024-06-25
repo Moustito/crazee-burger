@@ -1,21 +1,12 @@
-import styled from "styled-components";
-import TextInput from "../../../../reusable-ui/TextInput";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../context/OrderContext";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
+import Form from "./Form";
 import PrimaryButton from "../../../../reusable-ui/PrimaryButton";
-import { theme } from "../../../../../theme";
-import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
-import { getInputTextsConfig } from "./inputTextConfig";
-
-export const EMPTY_PRODUCT = {
-  title: "",
-  price: 0,
-  imageSource: "",
-};
 
 export default function AddForm() {
-  const [isSubmited, setIsSubmited] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const { handleAddProduct, newProduct, setNewProduct } =
     useContext(OrderContext);
 
@@ -43,54 +34,25 @@ export default function AddForm() {
   };
 
   const displaySuccesMessage = () => {
-    setIsSubmited(true);
+    setIsSubmitted(true);
     setTimeout(() => {
-      setIsSubmited(false);
+      setIsSubmitted(false);
     }, 2000);
   };
 
-  const inputTexts = getInputTextsConfig(newProduct);
-
   return (
-    <AddFormStyled onSubmit={handleSubmit}>
-      <ImagePreview
-        imageSource={newProduct.imageSource}
-        title={newProduct.title}
+    <Form
+      onSubmit={handleSubmit}
+      onChange={handleChange}
+      isSubmitted={isSubmitted}
+      product={newProduct}
+    >
+      <PrimaryButton
+        label={"Ajouter un nouveau produit au menu"}
+        className={isSubmitted && "activeButton"}
+        version="succes"
       />
-      <div className="InputFields">
-        {inputTexts.map((input) => (
-          <TextInput
-            {...input}
-            key={input.id}
-            onChange={handleChange}
-            version="minimalist"
-          />
-        ))}
-        <div className="submit">
-          <PrimaryButton
-            label={"Ajouter un nouveau produit au menu"}
-            className={isSubmited && "activeButton"}
-            version="succes"
-          />
-          {isSubmited && <SubmitMessage />}
-        </div>
-      </div>
-    </AddFormStyled>
+      {isSubmitted && <SubmitMessage />}
+    </Form>
   );
 }
-
-const AddFormStyled = styled.form`
-  display: flex;
-  padding-top: 30px;
-  padding-left: 70px;
-
-  .submit {
-    display: flex;
-
-    .activeButton {
-      color: ${theme.colors.success};
-      border: 1px solid ${theme.colors.success};
-      background-color: transparent;
-    }
-  }
-`;

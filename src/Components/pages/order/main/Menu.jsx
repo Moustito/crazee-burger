@@ -1,14 +1,46 @@
 import styled from "styled-components";
-import ProductCard from "./ProductCard";
+import Card from "./Card";
 import { useContext } from "react";
 import EmptyMenu from "./EmptyMenu";
 import OrderContext from "../../../../context/OrderContext";
 import comingSoon from "../../../../assets/images/coming-soon.png";
+import { checkIfProductIsClicked } from "./helper";
+import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 const DEFAULT_IMAGE = `${comingSoon}`;
 
 export default function Menu() {
-  const { menu, handleDelete } = useContext(OrderContext);
+  const {
+    menu,
+    handleDelete,
+    productSelected,
+    setProductSelected,
+    isModeAdmin,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditRef,
+  } = useContext(OrderContext);
+
+  const handleClick = async (idProductClicked) => {
+    if (!isModeAdmin) return;
+
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+
+    const productClikedOn = menu.find(
+      (product) => product.id === idProductClicked
+    );
+    await setProductSelected(productClikedOn);
+
+    titleEditRef.current.focus();
+  };
+
+  const handleCardDelete = (event, id) => {
+    event.stopPropagation();
+    handleDelete(id);
+    id === productSelected.id && setProductSelected(EMPTY_PRODUCT);
+    titleEditRef.current.focus();
+  };
 
   if (menu.length === 0) {
     return (
@@ -21,13 +53,16 @@ export default function Menu() {
   return (
     <MenuStyled>
       {menu.map(({ id, title, imageSource, price }) => (
-        <ProductCard
+        <Card
           key={id}
           id={id}
           title={title}
           imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
           price={price}
-          onDelete={() => handleDelete(id)}
+          onDelete={(event) => handleCardDelete(event, id)}
+          onClick={() => handleClick(id)}
+          isHoverable={isModeAdmin}
+          isSelected={checkIfProductIsClicked(id, productSelected.id)}
         />
       ))}
     </MenuStyled>
