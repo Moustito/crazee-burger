@@ -2,9 +2,11 @@ import { useContext, useState } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
 import Form from "./Form";
+import PrimaryButton from "../../../../reusable-ui/PrimaryButton";
+import SubmitMessage from "./SubmitMessage";
 
 export default function AddForm() {
-  const [isSubmited, setIsSubmited] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const { handleAddProduct, newProduct, setNewProduct } =
     useContext(OrderContext);
 
@@ -32,9 +34,9 @@ export default function AddForm() {
   };
 
   const displaySuccesMessage = () => {
-    setIsSubmited(true);
+    setIsSubmitted(true);
     setTimeout(() => {
-      setIsSubmited(false);
+      setIsSubmitted(false);
     }, 2000);
   };
 
@@ -42,8 +44,15 @@ export default function AddForm() {
     <Form
       onSubmit={handleSubmit}
       onChange={handleChange}
-      isSubmited={isSubmited}
+      isSubmitted={isSubmitted}
       product={newProduct}
-    />
+    >
+      <PrimaryButton
+        label={"Ajouter un nouveau produit au menu"}
+        className={isSubmitted && "activeButton"}
+        version="succes"
+      />
+      {isSubmitted && <SubmitMessage />}
+    </Form>
   );
 }

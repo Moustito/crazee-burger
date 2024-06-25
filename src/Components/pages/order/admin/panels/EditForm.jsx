@@ -7,6 +7,7 @@ import TextInput from "../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
 import { theme } from "../../../../../theme";
 import EditMessage from "./EditMessage";
+import Form from "./Form";
 
 export default function EditForm() {
   const { productSelected, setProductSelected, handleEdit, titleEditRef } =
@@ -26,26 +27,30 @@ export default function EditForm() {
   };
 
   return (
-    <EditFormStyled>
-      <ImagePreview
-        imageSource={productSelected.imageSource}
-        title={productSelected.title}
-      />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <TextInput
-            {...input}
-            key={input.id}
-            onChange={handleChange}
-            version="minimalist"
-            ref={input.name === "title" ? titleEditRef : null}
-          />
-        ))}
-        <div className="submit">
-          <EditMessage />
-        </div>
-      </div>
-    </EditFormStyled>
+    // <EditFormStyled>
+    //   <ImagePreview
+    //     imageSource={productSelected.imageSource}
+    //     title={productSelected.title}
+    //   />
+    //   <div className="input-fields">
+    //     {inputTexts.map((input) => (
+    //       <TextInput
+    //         {...input}
+    //         key={input.id}
+    //         onChange={handleChange}
+    //         version="minimalist"
+    //         ref={input.name === "title" ? titleEditRef : null}
+    //       />
+    //     ))}
+    //     <div className="submit">
+    //       <EditMessage />
+    //     </div>
+    //   </div>
+    // </EditFormStyled>
+
+    <Form onChange={handleChange} product={productSelected} ref={titleEditRef}>
+      <EditMessage />
+    </Form>
   );
 }
 
