@@ -38,7 +38,8 @@ export default function Menu() {
   const handleCardDelete = (event, id) => {
     event.stopPropagation();
     handleDelete(id);
-    setProductSelected(EMPTY_PRODUCT);
+    id === productSelected.id && setProductSelected(EMPTY_PRODUCT);
+    titleEditRef.current.focus();
   };
 
   if (menu.length === 0) {
