@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 
 export default function Basket() {
+  const testProduct = false;
+
   return (
     <BasketStyled>
       <div className="total-price">
@@ -9,7 +11,7 @@ export default function Basket() {
         <p>0.00€</p>
       </div>
       <div className="panier">
-        <p>Votre commande est vide.</p>
+        {testProduct ? <p>Vos produits...</p> : <p>Votre commande est vide.</p>}
       </div>
       <div className="panier-footer">Codé avec ❤️ et React.JS</div>
     </BasketStyled>
