@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import Card from "./Card";
+import Card from "../../../../../reusable-ui/Card.jsx";
 import { useContext } from "react";
 import EmptyMenu from "./EmptyMenu";
-import OrderContext from "../../../../context/OrderContext";
-import comingSoon from "../../../../assets/images/coming-soon.png";
+import OrderContext from "../../../../../../context/OrderContext";
+import comingSoon from "../../../../../../assets/images/coming-soon.png";
 import { checkIfProductIsClicked } from "./helper";
-import { EMPTY_PRODUCT } from "../../../../enums/product";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 const DEFAULT_IMAGE = `${comingSoon}`;
 
@@ -74,7 +74,8 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
   grid-row-gap: 60px;
   justify-items: center;
   overflow-y: scroll;

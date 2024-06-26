@@ -45,11 +45,5 @@ const FormStyled = styled.form`
 
   .submit {
     display: flex;
-
-    .activeButton {
-      color: ${theme.colors.success};
-      border: 1px solid ${theme.colors.success};
-      background-color: transparent;
-    }
   }
 `;

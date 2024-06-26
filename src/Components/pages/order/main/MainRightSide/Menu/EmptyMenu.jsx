@@ -1,15 +1,11 @@
 import { useContext } from "react";
-import OrderContext from "../../../../context/OrderContext";
+import OrderContext from "../../../../../../context/OrderContext";
 import styled from "styled-components";
-import PrimaryButton from "../../../reusable-ui/PrimaryButton";
-import { fakeMenu } from "../../../../fakeData/fakeMenu";
+import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
+import { fakeMenu } from "../../../../../../fakeData/fakeMenu";
 
 export default function NoProducts() {
-  const { isModeAdmin, setMenu } = useContext(OrderContext);
-
-  const resetMenu = () => {
-    setMenu(fakeMenu.SMALL);
-  };
+  const { isModeAdmin, setMenu, resetMenu } = useContext(OrderContext);
 
   if (isModeAdmin) {
     return (
@@ -37,6 +33,9 @@ const NoProductsStyled = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  grid-template-columns: 1 2 2 -3;
+
+  grid-column: 2 / 2;
 
   p {
     font-family: Amatic SC;

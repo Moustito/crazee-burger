@@ -4,11 +4,12 @@ import { EMPTY_PRODUCT } from "../../../../../enums/product";
 import Form from "./Form";
 import PrimaryButton from "../../../../reusable-ui/PrimaryButton";
 import SubmitMessage from "./SubmitMessage";
+import { useSuccessMessage } from "../../../../../hooks/useSuccessMessage";
 
 export default function AddForm() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const { handleAddProduct, newProduct, setNewProduct } =
     useContext(OrderContext);
+  const { isSubmitted, displaySuccesMessage } = useSuccessMessage();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,13 +34,6 @@ export default function AddForm() {
     });
   };
 
-  const displaySuccesMessage = () => {
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 2000);
-  };
-
   return (
     <Form
       onSubmit={handleSubmit}
@@ -49,7 +43,6 @@ export default function AddForm() {
     >
       <PrimaryButton
         label={"Ajouter un nouveau produit au menu"}
-        className={isSubmitted && "activeButton"}
         version="succes"
       />
       {isSubmitted && <SubmitMessage />}

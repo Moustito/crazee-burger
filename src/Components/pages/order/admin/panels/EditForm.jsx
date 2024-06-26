@@ -1,11 +1,6 @@
-import styled from "styled-components";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import HintMessage from "./HintMessage";
-import ImagePreview from "./ImagePreview";
-import TextInput from "../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
-import { theme } from "../../../../../theme";
 import EditMessage from "./EditMessage";
 import Form from "./Form";
 
@@ -27,42 +22,8 @@ export default function EditForm() {
   };
 
   return (
-    // <EditFormStyled>
-    //   <ImagePreview
-    //     imageSource={productSelected.imageSource}
-    //     title={productSelected.title}
-    //   />
-    //   <div className="input-fields">
-    //     {inputTexts.map((input) => (
-    //       <TextInput
-    //         {...input}
-    //         key={input.id}
-    //         onChange={handleChange}
-    //         version="minimalist"
-    //         ref={input.name === "title" ? titleEditRef : null}
-    //       />
-    //     ))}
-    //     <div className="submit">
-    //       <EditMessage />
-    //     </div>
-    //   </div>
-    // </EditFormStyled>
-
     <Form onChange={handleChange} product={productSelected} ref={titleEditRef}>
       <EditMessage />
     </Form>
   );
 }
-
-const EditFormStyled = styled.form`
-  display: flex;
-  gap: 20px;
-  padding-top: 30px;
-  padding-left: 70px;
-
-  .input-fields {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-`;
