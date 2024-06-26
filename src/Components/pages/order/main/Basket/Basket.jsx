@@ -6,7 +6,6 @@ import Footer from "./Footer";
 import BasketBody from "./BasketBody";
 
 export default function Basket() {
-  const testProduct = false;
 
   return (
     <BasketStyled>

@@ -1,10 +1,25 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import CardBasket from "../../../../reusable-ui/CardBasket";
+import { useContext } from "react";
+import OrderContext from "../../../../../context/OrderContext";
 
 export default function BasketBody() {
+  const { menuBasket } = useContext(OrderContext);
+
   return (
     <BasketBodyStyled>
-      <span className="empty-mesage">Votre commande est vide.</span>
+      {/* <span className="empty-mesage">Votre commande est vide.</span> */}
+      {menuBasket.map(({ id, title, imageSource, price }) => {
+        return (
+          <CardBasket
+            key={id}
+            title={title}
+            imageSource={imageSource}
+            price={price}
+          />
+        );
+      })}
     </BasketBodyStyled>
   );
 }

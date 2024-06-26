@@ -23,4 +23,7 @@ export default createContext({
   setProductSelected: () => {},
 
   titleEditRef: {},
+
+  addToBasket: () => {},
+  menuBasket: [],
 });

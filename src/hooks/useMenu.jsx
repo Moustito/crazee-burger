@@ -12,14 +12,14 @@ export const useMenu = () => {
   };
 
   const handleDelete = (productId) => {
-    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const menuCopy = deepClone(menu);
     const menuUpdate = menuCopy.filter((product) => productId !== product.id);
     setMenu(menuUpdate);
   };
 
   const handleEdit = (productBeingEdited) => {
     // Deep Clone
-    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const menuCopy = deepClone(menu);
 
     // Manip sur le State
     const indexOfProductToEdit = menu.findIndex(

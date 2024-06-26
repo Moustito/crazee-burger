@@ -7,6 +7,7 @@ import OrderContext from "../../../context/OrderContext";
 import { useRef, useState } from "react";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from "../../../hooks/useMenu";
+import { deepClone } from "../../../utils/array";
 
 export default function OrderPage() {
   const { username } = useParams();
@@ -18,6 +19,22 @@ export default function OrderPage() {
   const titleEditRef = useRef();
   const { menu, handleAddProduct, handleDelete, handleEdit, resetMenu } =
     useMenu();
+
+  const [menuBasket, setMenuBasket] = useState([]);
+  const addToBasket = (idProductClicked) => {
+    //Copie des menus
+    const menuCopy = deepClone(menu);
+    const menuBasketCopy = deepClone(menuBasket);
+
+    //manipulation de menuCopy
+    const ProductForBasket = menuCopy.find(
+      (product) => idProductClicked === product.id
+    );
+    const menuBasketUpdated = [ProductForBasket, ...menuBasketCopy];
+
+    //Mise à jour de basketMenu
+    setMenuBasket(menuBasketUpdated);
+  };
 
   const orderContextValue = {
     isModeAdmin,
@@ -36,6 +53,8 @@ export default function OrderPage() {
     setProductSelected,
     handleEdit,
     titleEditRef,
+    addToBasket,
+    menuBasket,
   };
 
   return (
