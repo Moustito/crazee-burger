@@ -5,46 +5,19 @@ import Main from "./main/Main";
 import { theme } from "../../../theme";
 import OrderContext from "../../../context/OrderContext";
 import { useRef, useState } from "react";
-import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
-import { deepClone } from "../../../utils/array";
+import { useMenu } from "../../../hooks/useMenu";
 
 export default function OrderPage() {
   const { username } = useParams();
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
-
-  const handleAddProduct = (newProduct) => {
-    const menuCopy = deepClone(menu);
-    const menuUpdated = [newProduct, ...menuCopy];
-    setMenu(menuUpdated);
-  };
-
-  const handleDelete = (productId) => {
-    const menuCopy = JSON.parse(JSON.stringify(menu));
-    const menuUpdate = menuCopy.filter((product) => productId !== product.id);
-    setMenu(menuUpdate);
-  };
-
-  const handleEdit = (productBeingEdited) => {
-    // Deep Clone
-    const menuCopy = JSON.parse(JSON.stringify(menu));
-
-    // Manip sur le State
-    const indexOfProductToEdit = menu.findIndex(
-      (menuProduct) => menuProduct.id === productBeingEdited.id
-    );
-
-    menuCopy[indexOfProductToEdit] = productBeingEdited;
-
-    // Update du State
-    setMenu(menuCopy);
-  };
+  const { menu, handleAddProduct, handleDelete, handleEdit, resetMenu } =
+    useMenu();
 
   const orderContextValue = {
     isModeAdmin,
@@ -54,9 +27,9 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     menu,
-    setMenu,
     handleAddProduct,
     handleDelete,
+    resetMenu,
     newProduct,
     setNewProduct,
     productSelected,
