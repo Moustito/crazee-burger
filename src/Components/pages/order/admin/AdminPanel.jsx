@@ -20,7 +20,6 @@ export default function AdminPanel() {
 
 const AdminPanelStyled = styled.div`
   height: 240px;
-  border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   background: ${theme.colors.white};
   border-top: 1px solid ${theme.colors.greyLight};
