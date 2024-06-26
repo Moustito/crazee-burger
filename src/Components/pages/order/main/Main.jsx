@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { theme } from "../../../../theme";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
-import Basket from "./Basket";
+import Basket from "./Basket/Basket";
 import MainRightSide from "./MainRightSide/MainRightSide";
 
 export default function Main() {
