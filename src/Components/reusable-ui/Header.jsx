@@ -6,11 +6,7 @@ export default function Header({ children }) {
 }
 
 const HeaderStyled = styled.div`
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-
+  height: 70px;
+  padding: 0 16px;
   background: #292729;
-  color: ${theme.colors.primary};
 `;

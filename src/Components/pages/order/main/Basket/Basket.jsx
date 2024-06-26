@@ -1,16 +1,15 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import Header from "../../../../reusable-ui/Header";
+import Total from "./Total";
+import { formatPrice } from "../../../../../utils/maths";
 
 export default function Basket() {
   const testProduct = false;
 
   return (
     <BasketStyled>
-      <Header>
-        <p>Total</p>
-        <p>0.00€</p>
-      </Header>
+      <Total amountToPay={formatPrice(0)} />
       <div className="panier">
         {testProduct ? <p>Vos produits...</p> : <p>Votre commande est vide.</p>}
       </div>
@@ -33,18 +32,6 @@ const BasketStyled = styled.div`
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 20px 0px #00000033 inset;
-
-  p {
-    padding: 12px 16px;
-
-    color: ${theme.colors.primary};
-
-    font-family: ${theme.fonts.family.stylish};
-    font-size: 36px;
-    font-weight: 400;
-    line-height: 45.4px;
-    letter-spacing: 2px;
-  }
 
   .panier {
     width: 100%;
