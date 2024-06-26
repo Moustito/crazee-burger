@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { formatPrice } from "../../utils/maths";
-import PrimaryButton from "./PrimaryButton";
+import PrimaryButton from "./PrimaryButton.jsx";
 import { theme } from "../../theme";
 import { TiDelete } from "react-icons/ti";
 import { useContext } from "react";
@@ -13,8 +13,8 @@ export default function Card({
   price,
   onDelete,
   onClick,
-  isHoverable,
-  isSelected,
+  ishoverable,
+  isselected,
 }) {
   const { isModeAdmin } = useContext(OrderContext);
 
@@ -22,8 +22,8 @@ export default function Card({
     <CardStyled
       className={className}
       onClick={onClick}
-      isHoverable={isHoverable}
-      isSelected={isSelected}
+      ishoverable={ishoverable}
+      isselected={isselected}
     >
       <div className="card">
         {isModeAdmin && <TiDelete className="icon" onClick={onDelete} />}
