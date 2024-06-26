@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
-import Header from "../../../../reusable-ui/Header";
 import Total from "./Total";
 import { formatPrice } from "../../../../../utils/maths";
+import Footer from "./Footer";
 
 export default function Basket() {
   const testProduct = false;
@@ -13,10 +13,7 @@ export default function Basket() {
       <div className="panier">
         {testProduct ? <p>Vos produits...</p> : <p>Votre commande est vide.</p>}
       </div>
-
-      <Header>
-        <p>Codé avec ❤️ et React.JS</p>
-      </Header>
+      <Footer />
     </BasketStyled>
   );
 }
@@ -26,8 +23,6 @@ const BasketStyled = styled.div`
   height: calc(95vh - 10vh);
 
   border-radius: 0px 0px 0px ${theme.borderRadius.extraRound};
-
-  width: 350px;
 
   display: flex;
   flex-direction: column;
@@ -47,15 +42,4 @@ const BasketStyled = styled.div`
       text-align: center;
     }
   }
-  /* .panier-footer {
-    width: 100%;
-    padding: 22px 0;
-    border-radius: 0px 0px 0px 15px;
-    background: #292729;
-    color: white;
-    font-family: ${theme.fonts.family.stylish};
-    text-align: center;
-    font-size: 20px;
-    font-weight: 700;
-  } */
 `;
