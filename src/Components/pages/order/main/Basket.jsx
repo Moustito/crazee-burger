@@ -19,11 +19,16 @@ export default function Basket() {
 }
 
 const BasketStyled = styled.div`
-  background-color: purple;
+  background-color: ${theme.colors.white};
+  height: calc(95vh - 10vh);
+
+  border-radius: 0px 0px 0px ${theme.borderRadius.extraRound};
+
   width: 350px;
+
   display: flex;
   flex-direction: column;
-  border-radius: 0px 0px 0px 15px;
+  box-shadow: 0px 0px 20px 0px #00000033 inset;
 
   .total-price {
     width: 100%;
@@ -41,11 +46,9 @@ const BasketStyled = styled.div`
   .panier {
     width: 100%;
     display: flex;
-    flex-grow: 1;
+    flex: 1;
     align-items: center;
     justify-content: center;
-    background: #f5f5f7;
-    box-shadow: 0px 0px 20px 0px #00000033 inset;
     p {
       font-family: ${theme.fonts.family.stylish};
       font-size: 36px;

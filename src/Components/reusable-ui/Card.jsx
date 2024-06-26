@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
-import { formatPrice } from "../../../../utils/maths";
-import PrimaryButton from "../../../reusable-ui/PrimaryButton";
-import { theme } from "../../../../theme";
+import { formatPrice } from "../../utils/maths";
+import PrimaryButton from "./PrimaryButton";
+import { theme } from "../../theme";
 import { TiDelete } from "react-icons/ti";
 import { useContext } from "react";
-import OrderContext from "../../../../context/OrderContext";
+import OrderContext from "../../context/OrderContext";
 
 export default function Card({
   className,
