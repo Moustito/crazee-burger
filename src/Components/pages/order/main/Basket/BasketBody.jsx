@@ -9,17 +9,21 @@ export default function BasketBody() {
 
   return (
     <BasketBodyStyled>
-      {/* <span className="empty-mesage">Votre commande est vide.</span> */}
-      {menuBasket.map(({ id, title, imageSource, price }) => {
-        return (
-          <CardBasket
-            key={id}
-            title={title}
-            imageSource={imageSource}
-            price={price}
-          />
-        );
-      })}
+      {menuBasket === false ? (
+        <span className="empty-mesage">Votre commande est vide.</span>
+      ) : (
+        menuBasket.map(({ id, title, imageSource, price, count }) => {
+          return (
+            <CardBasket
+              key={id}
+              title={title}
+              imageSource={imageSource}
+              price={price}
+              count={count}
+            />
+          );
+        })
+      )}
     </BasketBodyStyled>
   );
 }
@@ -28,6 +32,8 @@ const BasketBodyStyled = styled.div`
   flex: 1;
   background-color: ${theme.colors.white};
   box-shadow: ${theme.shadows.basket};
+  padding: 20px 16px;
+  overflow: scroll;
 
   .empty-mesage {
     display: flex;

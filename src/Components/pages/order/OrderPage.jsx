@@ -30,7 +30,11 @@ export default function OrderPage() {
     const ProductForBasket = menuCopy.find(
       (product) => idProductClicked === product.id
     );
-    const menuBasketUpdated = [ProductForBasket, ...menuBasketCopy];
+    const count = 1;
+    const ProductForBasket2 = { count, ...ProductForBasket };
+    console.log(ProductForBasket2);
+
+    const menuBasketUpdated = [ProductForBasket2, ...menuBasketCopy];
 
     //Mise à jour de basketMenu
     setMenuBasket(menuBasketUpdated);
