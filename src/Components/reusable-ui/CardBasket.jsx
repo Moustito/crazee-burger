@@ -3,17 +3,16 @@ import { theme } from "../../theme";
 import { formatPrice } from "../../utils/maths";
 
 export default function CardBasket({ title, imageSource, price, count }) {
-
   return (
     <CardBasketStyled>
       {/* <ImagePreview imageSource={imageSource} title={title} /> */}
       <img src={imageSource} alt={title} />
       <div className="text-content">
-        <h5>{title}</h5>
+        <h5 className="title">{title}</h5>
         <p>{formatPrice(price)}</p>
       </div>
       <div>
-        <p>{count}</p>
+        <p>x {count}</p>
       </div>
     </CardBasketStyled>
   );
@@ -38,12 +37,17 @@ const CardBasketStyled = styled.div`
     object-fit: contain;
   }
 
-  h5 {
+  .title {
     font-family: ${theme.fonts.family.stylish};
     font-size: ${theme.fonts.size.P3};
     font-weight: ${theme.fonts.weights.bold};
     line-height: 32px;
     color: ${theme.colors.dark};
+
+    width: 120px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
   p {
     font-family: Open Sans;
