@@ -51,6 +51,14 @@ export default function OrderPage() {
     setMenuBasket(menuBasketCopy);
   };
 
+  const handleBasketDelete = (productId) => {
+    const menuBasketCopy = deepClone(menuBasket);
+    const menuBasketUpdate = menuBasketCopy.filter(
+      (product) => productId !== product.id
+    );
+    setMenuBasket(menuBasketUpdate);
+  };
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -70,6 +78,7 @@ export default function OrderPage() {
     titleEditRef,
     addToBasket,
     menuBasket,
+    handleBasketDelete,
   };
 
   return (

@@ -6,7 +6,7 @@ import OrderContext from "../../../../../context/OrderContext";
 import { DEFAULT_IMAGE } from "../MainRightSide/Menu/Menu";
 
 export default function BasketBody() {
-  const { menuBasket } = useContext(OrderContext);
+  const { menuBasket, handleBasketDelete } = useContext(OrderContext);
 
   return (
     <BasketBodyStyled>
@@ -23,6 +23,7 @@ export default function BasketBody() {
                 imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
                 price={price}
                 count={count}
+                onDelete={() => handleBasketDelete(id)}
               />
             );
           })

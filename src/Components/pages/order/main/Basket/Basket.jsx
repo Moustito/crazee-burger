@@ -8,7 +8,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 
 export default function Basket() {
-  const { menuBasket } = useContext(OrderContext);
+  const { menuBasket, handleBasketDelete } = useContext(OrderContext);
 
   const calculateTotalPrice = () => {
     return menuBasket
