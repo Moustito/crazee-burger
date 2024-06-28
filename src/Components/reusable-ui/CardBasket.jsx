@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import ImagePreview from "../pages/order/admin/panels/ImagePreview";
 import { theme } from "../../theme";
 import { formatPrice } from "../../utils/maths";
 
 export default function CardBasket({ title, imageSource, price, count }) {
+
   return (
     <CardBasketStyled>
       {/* <ImagePreview imageSource={imageSource} title={title} /> */}

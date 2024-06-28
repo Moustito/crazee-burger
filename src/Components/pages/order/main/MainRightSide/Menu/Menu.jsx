@@ -7,7 +7,7 @@ import comingSoon from "../../../../../../assets/images/coming-soon.png";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
-const DEFAULT_IMAGE = `${comingSoon}`;
+export const DEFAULT_IMAGE = `${comingSoon}`;
 
 export default function Menu() {
   const {

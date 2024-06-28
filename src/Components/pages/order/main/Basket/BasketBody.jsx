@@ -3,6 +3,7 @@ import { theme } from "../../../../../theme";
 import CardBasket from "../../../../reusable-ui/CardBasket";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
+import { DEFAULT_IMAGE } from "../MainRightSide/Menu/Menu";
 
 export default function BasketBody() {
   const { menuBasket } = useContext(OrderContext);
@@ -17,7 +18,7 @@ export default function BasketBody() {
             <CardBasket
               key={id}
               title={title}
-              imageSource={imageSource}
+              imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
               price={price}
               count={count}
             />
