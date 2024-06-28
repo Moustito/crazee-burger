@@ -13,17 +13,19 @@ export default function BasketBody() {
       {menuBasket === false ? (
         <span className="empty-mesage">Votre commande est vide.</span>
       ) : (
-        menuBasket.map(({ id, title, imageSource, price, count }) => {
-          return (
-            <CardBasket
-              key={id}
-              title={title}
-              imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
-              price={price}
-              count={count}
-            />
-          );
-        })
+        [...menuBasket]
+          .reverse()
+          .map(({ id, title, imageSource, price, count }) => {
+            return (
+              <CardBasket
+                key={id}
+                title={title}
+                imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
+                price={price}
+                count={count}
+              />
+            );
+          })
       )}
     </BasketBodyStyled>
   );
