@@ -22,22 +22,33 @@ export default function OrderPage() {
 
   const [menuBasket, setMenuBasket] = useState([]);
   const addToBasket = (idProductClicked) => {
-    //Copie des menus
+    // Copie des menus
     const menuCopy = deepClone(menu);
     const menuBasketCopy = deepClone(menuBasket);
 
-    //manipulation de menuCopy
+    // Manipulation de menuCopy
     const ProductForBasket = menuCopy.find(
       (product) => idProductClicked === product.id
     );
-    const count = 1;
-    const ProductForBasket2 = { count, ...ProductForBasket };
-    console.log(ProductForBasket2);
 
-    const menuBasketUpdated = [ProductForBasket2, ...menuBasketCopy];
+    // Ajoute la variable count à mon objet
+    const ProductForBasketWithCount = { count: 1, ...ProductForBasket };
 
-    //Mise à jour de basketMenu
-    setMenuBasket(menuBasketUpdated);
+    // Check si l'objet est déjà présent dans le basket et l'incrémente si c'est le cas
+    const productIndex = menuBasketCopy.findIndex(
+      (product) => product.id === idProductClicked
+    );
+
+    if (productIndex !== -1) {
+      // Si le produit existe déjà dans le panier, incrémenter le compteur
+      menuBasketCopy[productIndex].count += 1;
+    } else {
+      // Si le produit n'existe pas, ajouter le produit avec count initialisé à 1
+      menuBasketCopy.push(ProductForBasketWithCount);
+    }
+
+    // Mise à jour de BasketMenu
+    setMenuBasket(menuBasketCopy);
   };
 
   const orderContextValue = {
