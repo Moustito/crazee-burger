@@ -3,7 +3,7 @@ import { theme } from "../../theme";
 import { formatPrice } from "../../utils/maths";
 import { MdDeleteForever } from "react-icons/md";
 
-export default function CardBasket({
+export default function BasketCard({
   title,
   imageSource,
   price,
@@ -11,7 +11,7 @@ export default function CardBasket({
   onDelete,
 }) {
   return (
-    <CardBasketStyled>
+    <BasketCardStyled>
       {/* <ImagePreview imageSource={imageSource} title={title} /> */}
       <img src={imageSource} alt={title} />
       <div className="text-content">
@@ -24,11 +24,11 @@ export default function CardBasket({
       <div className="button-delete" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
-    </CardBasketStyled>
+    </BasketCardStyled>
   );
 }
 
-const CardBasketStyled = styled.div`
+const BasketCardStyled = styled.div`
   height: 86px;
   position: relative;
   overflow: hidden;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
-import CardBasket from "../../../../reusable-ui/CardBasket";
+import BasketCard from "../../../../reusable-ui/BasketCard";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { DEFAULT_IMAGE } from "../MainRightSide/Menu/Menu";
@@ -17,7 +17,7 @@ export default function BasketBody() {
           .reverse()
           .map(({ id, title, imageSource, price, count }) => {
             return (
-              <CardBasket
+              <BasketCard
                 key={id}
                 title={title}
                 imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
