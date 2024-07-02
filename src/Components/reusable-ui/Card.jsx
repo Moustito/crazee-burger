@@ -52,7 +52,7 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-  ${({ isHoverable }) => isHoverable && isHoverableStyle}
+  ${({ ishoverable }) => ishoverable && ishoverableStyle}
 
   height: 330px;
 
@@ -136,12 +136,12 @@ const CardStyled = styled.div`
       }
     }
 
-    ${({ isHoverable, isSelected }) =>
-      isHoverable && isSelected && isSelectedStyle}
+    ${({ ishoverable, isselected }) =>
+      ishoverable && isselected && isselectedStyle}
   }
 `;
 
-const isHoverableStyle = css`
+const ishoverableStyle = css`
   .card:hover {
     cursor: pointer;
 
@@ -152,7 +152,7 @@ const isHoverableStyle = css`
   }
 `;
 
-const isSelectedStyle = css`
+const isselectedStyle = css`
   background-color: ${theme.colors.primary};
 
   .icon {
