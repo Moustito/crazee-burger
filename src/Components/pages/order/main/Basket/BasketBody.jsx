@@ -6,7 +6,8 @@ import OrderContext from "../../../../../context/OrderContext";
 import { DEFAULT_IMAGE } from "../MainRightSide/Menu/Menu";
 
 export default function BasketBody() {
-  const { menuBasket, handleBasketDelete } = useContext(OrderContext);
+  const { menuBasket, handleBasketDelete, isModeAdmin } =
+    useContext(OrderContext);
 
   return (
     <BasketBodyStyled>
@@ -24,6 +25,7 @@ export default function BasketBody() {
                 price={price}
                 count={count}
                 onDelete={() => handleBasketDelete(id)}
+                ishoverable={isModeAdmin}
               />
             );
           })
@@ -50,5 +52,9 @@ const BasketBodyStyled = styled.div`
     font-family: ${theme.fonts.family.stylish};
     font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.greyBlue};
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;

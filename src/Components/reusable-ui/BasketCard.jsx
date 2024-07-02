@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import { formatPrice } from "../../utils/maths";
 import { MdDeleteForever } from "react-icons/md";
@@ -9,9 +9,10 @@ export default function BasketCard({
   price,
   count,
   onDelete,
+  ishoverable,
 }) {
   return (
-    <BasketCardStyled>
+    <BasketCardStyled ishoverable={ishoverable}>
       {/* <ImagePreview imageSource={imageSource} title={title} /> */}
       <img src={imageSource} alt={title} />
       <div className="text-content">
@@ -29,6 +30,8 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
+  ${({ ishoverable }) => ishoverable && ishoverableStyle}
+
   height: 86px;
   position: relative;
   overflow: hidden;
@@ -73,6 +76,9 @@ const BasketCardStyled = styled.div`
   .button-delete {
     display: none;
   }
+`;
+
+const ishoverableStyle = css`
   &:hover {
     .button-delete {
       width: 76px;
