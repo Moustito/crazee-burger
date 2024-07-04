@@ -9,10 +9,9 @@ export default function BasketCard({
   price,
   quantity,
   onDelete,
-  ishoverable,
 }) {
   return (
-    <BasketCardStyled ishoverable={ishoverable}>
+    <BasketCardStyled>
       {/* <ImagePreview imageSource={imageSource} title={title} /> */}
       <img src={imageSource} alt={title} />
       <div className="text-content">
@@ -30,11 +29,10 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
-  ${({ ishoverable }) => ishoverable && ishoverableStyle}
-
   height: 86px;
   position: relative;
   overflow: hidden;
+  user-select: none;
 
   display: flex;
   align-items: center;
@@ -45,6 +43,39 @@ const BasketCardStyled = styled.div`
   border-radius: 5px;
   box-shadow: -4px 4px 15px 0px #00000033;
   background-color: ${theme.colors.white};
+
+  &:hover {
+    .button-delete {
+      width: 76px;
+      height: 100%;
+
+      position: absolute;
+      right: 0;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: ${theme.colors.red};
+
+      &:hover {
+        cursor: pointer;
+        .icon {
+          color: ${theme.colors.dark};
+        }
+      }
+      &:active {
+        .icon {
+          color: ${theme.colors.white};
+        }
+      }
+      .icon {
+        width: 24px;
+        height: 24px;
+        color: ${theme.colors.white};
+      }
+    }
+  }
 
   img {
     height: 70px;
@@ -77,40 +108,5 @@ const BasketCardStyled = styled.div`
   }
   .button-delete {
     display: none;
-  }
-`;
-
-const ishoverableStyle = css`
-  &:hover {
-    .button-delete {
-      width: 76px;
-      height: 100%;
-
-      position: absolute;
-      right: 0;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      background-color: ${theme.colors.red};
-
-      &:hover {
-        cursor: pointer;
-        .icon {
-          color: ${theme.colors.dark};
-        }
-      }
-      &:active {
-        .icon {
-          color: ${theme.colors.white};
-        }
-      }
-      .icon {
-        width: 24px;
-        height: 24px;
-        color: ${theme.colors.white};
-      }
-    }
   }
 `;

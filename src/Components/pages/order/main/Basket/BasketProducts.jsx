@@ -20,7 +20,6 @@ export default function BasketProducts() {
             price={price}
             quantity={quantity}
             onDelete={() => handleDeleteToBasket(id)}
-            ishoverable={isModeAdmin}
           />
         );
       })}
