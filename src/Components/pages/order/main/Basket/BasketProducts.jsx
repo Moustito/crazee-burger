@@ -11,21 +11,19 @@ export default function BasketProducts() {
 
   return (
     <BasketProductsStyled>
-      {[...menuBasket]
-        .reverse()
-        .map(({ id, title, imageSource, price, quantity }) => {
-          return (
-            <BasketCard
-              key={id}
-              title={title}
-              imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
-              price={price}
-              quantity={quantity}
-              onDelete={() => handleDeleteToBasket(id)}
-              ishoverable={isModeAdmin}
-            />
-          );
-        })}
+      {[...menuBasket].map(({ id, title, imageSource, price, quantity }) => {
+        return (
+          <BasketCard
+            key={id}
+            title={title}
+            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
+            price={price}
+            quantity={quantity}
+            onDelete={() => handleDeleteToBasket(id)}
+            ishoverable={isModeAdmin}
+          />
+        );
+      })}
     </BasketProductsStyled>
   );
 }

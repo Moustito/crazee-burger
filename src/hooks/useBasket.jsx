@@ -1,38 +1,45 @@
 import { useState } from "react";
-import { deepClone } from "../utils/array";
+import { deepClone, find } from "../utils/array";
 import { fakeBasket } from "../fakeData/fakeBasket";
 
 export const useBasket = (menu) => {
   const [menuBasket, setMenuBasket] = useState([]);
 
   const handleAddToBasket = (idProductClicked) => {
-    // Copie des menus
+    // Copie du State
+    const basketCopy = deepClone(menuBasket);
     const menuCopy = deepClone(menu);
-    const menuBasketCopy = deepClone(menuBasket);
 
-    // Manipulation de menuCopy
-    const ProductForBasket = menuCopy.find(
-      (product) => idProductClicked === product.id
-    );
+    const isProductAlreadyInBasket =
+      find(idProductClicked, basketCopy) !== undefined;
 
-    // Ajoute la variable quantity à mon objet
-    const ProductForBasketWithQuantity = { ...ProductForBasket, quantity: 1 };
+    const productToAdd = find(idProductClicked, menuCopy);
 
-    // Check si l'objet est déjà présent dans le basket et l'incrémente si c'est le cas
-    const productIndex = menuBasketCopy.findIndex(
-      (product) => product.id === idProductClicked
-    );
+    //Manipulation du State
+    //1er cas : Le produit n'est pas déjà dans le basket
+    if (!isProductAlreadyInBasket) {
+      const newBasketProduct = {
+        ...productToAdd,
+        quantity: 1,
+      };
 
-    if (productIndex !== -1) {
-      // Si le produit existe déjà dans le panier, incrémenter le compteur
-      menuBasketCopy[productIndex].quantity += 1;
-    } else {
-      // Si le produit n'existe pas, ajouter le produit avec quantity initialisé à 1
-      menuBasketCopy.push(ProductForBasketWithQuantity);
+      const basketUpdated = [newBasketProduct, ...basketCopy];
+
+      //Update du State
+      return setMenuBasket(basketUpdated);
     }
 
-    // Mise à jour de BasketMenu
-    setMenuBasket(menuBasketCopy);
+    //2ème cas : le prosuit est déjà dans le basket
+    if (isProductAlreadyInBasket) {
+      const indexOfProductToIncrement = menuBasket.findIndex(
+        (basketProduct) => basketProduct.id === idProductClicked
+      );
+
+      basketCopy[indexOfProductToIncrement].quantity += 1;
+
+      //Update du State
+      return setMenuBasket(basketCopy);
+    }
   };
 
   const handleDeleteToBasket = (productId) => {
@@ -40,6 +47,7 @@ export const useBasket = (menu) => {
     const menuBasketUpdate = menuBasketCopy.filter(
       (product) => productId !== product.id
     );
+
     setMenuBasket(menuBasketUpdate);
   };
 
