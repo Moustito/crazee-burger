@@ -3,11 +3,8 @@ import Card from "../../../../../reusable-ui/Card.jsx";
 import { useContext } from "react";
 import EmptyMenu from "./EmptyMenu";
 import OrderContext from "../../../../../../context/OrderContext";
-import comingSoon from "../../../../../../assets/images/coming-soon.png";
 import { checkIfProductIsClicked } from "./helper";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
-
-export const DEFAULT_IMAGE = `${comingSoon}`;
+import { IMAGE_COMING_SOON } from "../../../../../../enums/product";
 
 export default function Menu() {
   const {
@@ -40,7 +37,7 @@ export default function Menu() {
     event.stopPropagation();
     handleDelete(id);
     handleBasketDelete(id);
-    id === productSelected.id && setProductSelected(EMPTY_PRODUCT);
+    id === productSelected.id && setProductSelected(IMAGE_COMING_SOON);
     titleEditRef.current.focus();
   };
 
@@ -59,7 +56,7 @@ export default function Menu() {
           key={id}
           id={id}
           title={title}
-          imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
+          imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
           price={price}
           onDelete={(event) => handleCardDelete(event, id)}
           onClick={() => handleClick(id)}

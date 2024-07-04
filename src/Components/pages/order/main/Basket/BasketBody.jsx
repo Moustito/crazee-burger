@@ -3,7 +3,7 @@ import { theme } from "../../../../../theme";
 import BasketCard from "../../../../reusable-ui/BasketCard";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import { DEFAULT_IMAGE } from "../MainRightSide/Menu/Menu";
+import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 
 export default function BasketBody() {
   const { menuBasket, handleBasketDelete, isModeAdmin } =
@@ -21,7 +21,7 @@ export default function BasketBody() {
               <BasketCard
                 key={id}
                 title={title}
-                imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
+                imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
                 price={price}
                 quantity={quantity}
                 onDelete={() => handleBasketDelete(id)}

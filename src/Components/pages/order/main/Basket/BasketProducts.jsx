@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
-import { DEFAULT_IMAGE } from "../MainRightSide/Menu/Menu";
 import BasketCard from "../../../../reusable-ui/BasketCard";
 import { theme } from "../../../../../theme";
+import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 
 export default function BasketProducts() {
   const { menuBasket, handleBasketDelete, isModeAdmin } =
@@ -18,7 +18,7 @@ export default function BasketProducts() {
             <BasketCard
               key={id}
               title={title}
-              imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
+              imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
               price={price}
               quantity={quantity}
               onDelete={() => handleBasketDelete(id)}
