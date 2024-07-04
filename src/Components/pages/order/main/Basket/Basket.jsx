@@ -11,20 +11,17 @@ import EmptyBasket from "./EmptyBasket";
 export default function Basket() {
   const { menuBasket } = useContext(OrderContext);
 
-  const calculateTotalPrice = () => {
-    return (
-      menuBasket
-        // .filter((product) => !Number.isNaN(product.price))
-        .reduce((total, product) => total + product.price * product.quantity, 0)
-        .toFixed(2)
-    );
+  const TotalToPay = () => {
+    return menuBasket
+      .filter((product) => !isNaN(product.price))
+      .reduce((total, product) => total + product.price * product.quantity, 0);
   };
 
   const isBasketEmpty = menuBasket.length === 0;
 
   return (
     <BasketStyled>
-      <Total amountToPay={formatPrice(calculateTotalPrice())} />
+      <Total amountToPay={formatPrice(TotalToPay())} />
       {isBasketEmpty ? <EmptyBasket /> : <BasketProducts />}
       <Footer />
     </BasketStyled>
