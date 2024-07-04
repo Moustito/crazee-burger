@@ -15,8 +15,15 @@ export default function Card({
   onClick,
   ishoverable,
   isselected,
+  id,
 }) {
-  const { isModeAdmin } = useContext(OrderContext);
+  const { isModeAdmin, handleAddProduct, handleAddToBasket } =
+    useContext(OrderContext);
+
+  const handleButtonClick = (event, idProductClicked) => {
+    event.stopPropagation();
+    handleAddToBasket(idProductClicked);
+  };
 
   return (
     <CardStyled
@@ -35,7 +42,7 @@ export default function Card({
             <PrimaryButton
               label={"Ajouter"}
               className={"add-button"}
-              onClick={(event) => event.stopPropagation()}
+              onClick={(event) => handleButtonClick(event, id)}
             />
           </div>
         </div>
@@ -45,7 +52,7 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-  ${({ isHoverable }) => isHoverable && isHoverableStyle}
+  ${({ ishoverable }) => ishoverable && ishoverableStyle}
 
   height: 330px;
 
@@ -129,12 +136,12 @@ const CardStyled = styled.div`
       }
     }
 
-    ${({ isHoverable, isSelected }) =>
-      isHoverable && isSelected && isSelectedStyle}
+    ${({ ishoverable, isselected }) =>
+      ishoverable && isselected && isselectedStyle}
   }
 `;
 
-const isHoverableStyle = css`
+const ishoverableStyle = css`
   .card:hover {
     cursor: pointer;
 
@@ -145,7 +152,7 @@ const isHoverableStyle = css`
   }
 `;
 
-const isSelectedStyle = css`
+const isselectedStyle = css`
   background-color: ${theme.colors.primary};
 
   .icon {
