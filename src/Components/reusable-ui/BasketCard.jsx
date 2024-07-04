@@ -7,7 +7,7 @@ export default function BasketCard({
   title,
   imageSource,
   price,
-  count,
+  quantity,
   onDelete,
   ishoverable,
 }) {
@@ -20,7 +20,7 @@ export default function BasketCard({
         <p>{formatPrice(price)}</p>
       </div>
       <div>
-        <p className="count">x {count}</p>
+        <p className="quantity">x {quantity}</p>
       </div>
       <div className="button-delete" onClick={onDelete}>
         <MdDeleteForever className="icon" />
@@ -72,7 +72,7 @@ const BasketCardStyled = styled.div`
     line-height: 20.43px;
     color: ${theme.colors.primary};
   }
-  .count {
+  .quantity {
     display: block;
   }
   .button-delete {

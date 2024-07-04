@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { deepClone } from "../utils/array";
+import { fakeBasket } from "../fakeData/fakeBasket";
 
 export const useBasket = (menu) => {
-  const [menuBasket, setMenuBasket] = useState([]);
+  const [menuBasket, setMenuBasket] = useState(fakeBasket.LARGE_WEIRD);
 
   const handleBasketAddProduct = (idProductClicked) => {
     // Copie des menus
@@ -14,8 +15,8 @@ export const useBasket = (menu) => {
       (product) => idProductClicked === product.id
     );
 
-    // Ajoute la variable count à mon objet
-    const ProductForBasketWithCount = { count: 1, ...ProductForBasket };
+    // Ajoute la variable quantity à mon objet
+    const ProductForBasketWithQuantity = { quantity: 1, ...ProductForBasket };
 
     // Check si l'objet est déjà présent dans le basket et l'incrémente si c'est le cas
     const productIndex = menuBasketCopy.findIndex(
@@ -24,10 +25,10 @@ export const useBasket = (menu) => {
 
     if (productIndex !== -1) {
       // Si le produit existe déjà dans le panier, incrémenter le compteur
-      menuBasketCopy[productIndex].count += 1;
+      menuBasketCopy[productIndex].quantity += 1;
     } else {
-      // Si le produit n'existe pas, ajouter le produit avec count initialisé à 1
-      menuBasketCopy.push(ProductForBasketWithCount);
+      // Si le produit n'existe pas, ajouter le produit avec quantity initialisé à 1
+      menuBasketCopy.push(ProductForBasketWithQuantity);
     }
 
     // Mise à jour de BasketMenu

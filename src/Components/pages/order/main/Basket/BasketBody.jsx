@@ -16,14 +16,14 @@ export default function BasketBody() {
       ) : (
         [...menuBasket]
           .reverse()
-          .map(({ id, title, imageSource, price, count }) => {
+          .map(({ id, title, imageSource, price, quantity }) => {
             return (
               <BasketCard
                 key={id}
                 title={title}
                 imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
                 price={price}
-                count={count}
+                quantity={quantity}
                 onDelete={() => handleBasketDelete(id)}
                 ishoverable={isModeAdmin}
               />
