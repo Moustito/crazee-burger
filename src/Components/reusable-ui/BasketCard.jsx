@@ -53,6 +53,8 @@ const BasketCardStyled = styled.div`
   }
 
   .title {
+    height: 32px;
+
     font-family: ${theme.fonts.family.stylish};
     font-size: ${theme.fonts.size.P3};
     font-weight: ${theme.fonts.weights.bold};
