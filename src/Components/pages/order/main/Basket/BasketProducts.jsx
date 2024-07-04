@@ -9,6 +9,10 @@ export default function BasketProducts() {
   const { menuBasket, handleDeleteToBasket, isModeAdmin } =
     useContext(OrderContext);
 
+  const handleBasketCardDelete = (id) => {
+    handleDeleteToBasket(id);
+  };
+
   return (
     <BasketProductsStyled>
       {[...menuBasket].map(({ id, title, imageSource, price, quantity }) => {
@@ -19,7 +23,7 @@ export default function BasketProducts() {
             imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
             price={price}
             quantity={quantity}
-            onDelete={() => handleDeleteToBasket(id)}
+            onDelete={() => handleBasketCardDelete(id)}
           />
         );
       })}

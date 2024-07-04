@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { deepClone, find, findIndex } from "../utils/array";
+import { deepClone, filter, find, findIndex } from "../utils/array";
 import { fakeBasket } from "../fakeData/fakeBasket";
 
 export const useBasket = (menu) => {
@@ -47,9 +47,7 @@ export const useBasket = (menu) => {
 
   const handleDeleteToBasket = (productId) => {
     const menuBasketCopy = deepClone(menuBasket);
-    const menuBasketUpdate = menuBasketCopy.filter(
-      (product) => productId !== product.id
-    );
+    const menuBasketUpdate = filter(productId, menuBasketCopy);
 
     setMenuBasket(menuBasketUpdate);
   };
