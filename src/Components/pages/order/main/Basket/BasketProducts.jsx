@@ -6,8 +6,10 @@ import { theme } from "../../../../../theme";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 
 export default function BasketProducts() {
-  const { menuBasket, handleBasketDelete, isModeAdmin } =
+  const { menuBasket, handleDeleteToBasket, isModeAdmin } =
     useContext(OrderContext);
+
+  console.log(menuBasket);
 
   return (
     <BasketProductsStyled>
@@ -21,7 +23,7 @@ export default function BasketProducts() {
               imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
               price={price}
               quantity={quantity}
-              onDelete={() => handleBasketDelete(id)}
+              onDelete={() => handleDeleteToBasket(id)}
               ishoverable={isModeAdmin}
             />
           );

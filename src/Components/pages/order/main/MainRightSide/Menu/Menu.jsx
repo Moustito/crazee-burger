@@ -16,7 +16,7 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleEditRef,
-    handleBasketDelete,
+    handleDeleteToBasket,
   } = useContext(OrderContext);
 
   const handleClick = async (idProductClicked) => {
@@ -36,7 +36,7 @@ export default function Menu() {
   const handleCardDelete = (event, id) => {
     event.stopPropagation();
     handleDelete(id);
-    handleBasketDelete(id);
+    handleDeleteToBasket(id);
     id === productSelected.id && setProductSelected(IMAGE_COMING_SOON);
     titleEditRef.current.focus();
   };

@@ -5,7 +5,7 @@ import { fakeBasket } from "../fakeData/fakeBasket";
 export const useBasket = (menu) => {
   const [menuBasket, setMenuBasket] = useState([]);
 
-  const handleBasketAddProduct = (idProductClicked) => {
+  const handleAddToBasket = (idProductClicked) => {
     // Copie des menus
     const menuCopy = deepClone(menu);
     const menuBasketCopy = deepClone(menuBasket);
@@ -32,10 +32,11 @@ export const useBasket = (menu) => {
     }
 
     // Mise à jour de BasketMenu
+    console.log(menuBasketCopy);
     setMenuBasket(menuBasketCopy);
   };
 
-  const handleBasketDelete = (productId) => {
+  const handleDeleteToBasket = (productId) => {
     const menuBasketCopy = deepClone(menuBasket);
     const menuBasketUpdate = menuBasketCopy.filter(
       (product) => productId !== product.id
@@ -45,7 +46,7 @@ export const useBasket = (menu) => {
 
   return {
     menuBasket,
-    handleBasketAddProduct,
-    handleBasketDelete,
+    handleAddToBasket,
+    handleDeleteToBasket,
   };
 };

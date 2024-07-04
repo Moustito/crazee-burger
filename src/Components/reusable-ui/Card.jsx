@@ -17,12 +17,12 @@ export default function Card({
   isselected,
   id,
 }) {
-  const { isModeAdmin, handleAddProduct, handleBasketAddProduct } =
+  const { isModeAdmin, handleAddProduct, handleAddToBasket } =
     useContext(OrderContext);
 
   const handleButtonClick = (event, idProductClicked) => {
     event.stopPropagation();
-    handleBasketAddProduct(idProductClicked);
+    handleAddToBasket(idProductClicked);
   };
 
   return (

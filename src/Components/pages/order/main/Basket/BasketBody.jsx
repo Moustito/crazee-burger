@@ -6,7 +6,7 @@ import OrderContext from "../../../../../context/OrderContext";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 
 export default function BasketBody() {
-  const { menuBasket, handleBasketDelete, isModeAdmin } =
+  const { menuBasket, handleDeleteToBasket, isModeAdmin } =
     useContext(OrderContext);
 
   return (
@@ -24,7 +24,7 @@ export default function BasketBody() {
                 imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
                 price={price}
                 quantity={quantity}
-                onDelete={() => handleBasketDelete(id)}
+                onDelete={() => handleDeleteToBasket(id)}
                 ishoverable={isModeAdmin}
               />
             );
