@@ -9,9 +9,16 @@ export default function BasketCard({
   price,
   quantity,
   onDelete,
+  isModeAdmin,
+  isselected,
+  onClick,
 }) {
   return (
-    <BasketCardStyled>
+    <BasketCardStyled
+      onClick={onClick}
+      isselected={isselected}
+      isModeAdmin={isModeAdmin}
+    >
       {/* <ImagePreview imageSource={imageSource} title={title} /> */}
       <img src={imageSource} alt={title} />
       <div className="text-content">
@@ -109,4 +116,11 @@ const BasketCardStyled = styled.div`
   .button-delete {
     display: none;
   }
+
+  ${({ isModeAdmin, isselected }) =>
+    isModeAdmin && isselected && isselectedStyle}
+`;
+
+const isselectedStyle = css`
+  background-color: green;
 `;

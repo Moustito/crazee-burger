@@ -6,11 +6,38 @@ import { theme } from "../../../../../theme";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 
 export default function BasketProducts() {
-  const { menuBasket, handleDeleteToBasket, isModeAdmin } =
-    useContext(OrderContext);
+  const {
+    menuBasket,
+    handleDeleteToBasket,
+    isModeAdmin,
+    productSelected,
+    menu,
+    setProductSelected,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditRef,
+  } = useContext(OrderContext);
 
   const handleBasketCardDelete = (id) => {
     handleDeleteToBasket(id);
+  };
+
+  const checkIfProductIsClicked = (idProductInMenu, idProductClikedOn) => {
+    return idProductInMenu === idProductClikedOn;
+  };
+
+  const handleClick = async (idProductClicked) => {
+    if (!isModeAdmin) return;
+
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+
+    const productClikedOn = menu.find(
+      (product) => product.id === idProductClicked
+    );
+    await setProductSelected(productClikedOn);
+
+    titleEditRef.current.focus();
   };
 
   return (
@@ -24,6 +51,9 @@ export default function BasketProducts() {
             price={price}
             quantity={quantity}
             onDelete={() => handleBasketCardDelete(id)}
+            onClick={() => handleClick(id)}
+            isModeAdmin={isModeAdmin}
+            isselected={checkIfProductIsClicked(id, productSelected.id)}
           />
         );
       })}
