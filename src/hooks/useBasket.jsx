@@ -16,7 +16,7 @@ export const useBasket = (menu) => {
     );
 
     // Ajoute la variable quantity à mon objet
-    const ProductForBasketWithQuantity = { quantity: 1, ...ProductForBasket };
+    const ProductForBasketWithQuantity = { ...ProductForBasket, quantity: 1 };
 
     // Check si l'objet est déjà présent dans le basket et l'incrémente si c'est le cas
     const productIndex = menuBasketCopy.findIndex(
@@ -32,7 +32,6 @@ export const useBasket = (menu) => {
     }
 
     // Mise à jour de BasketMenu
-    console.log(menuBasketCopy);
     setMenuBasket(menuBasketCopy);
   };
 

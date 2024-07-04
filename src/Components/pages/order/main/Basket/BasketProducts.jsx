@@ -9,8 +9,6 @@ export default function BasketProducts() {
   const { menuBasket, handleDeleteToBasket, isModeAdmin } =
     useContext(OrderContext);
 
-  console.log(menuBasket);
-
   return (
     <BasketProductsStyled>
       {[...menuBasket]
