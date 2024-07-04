@@ -41,7 +41,7 @@ const BasketBodyStyled = styled.div`
   padding: 20px 16px;
   overflow: scroll;
 
-  .empty-mesage {
+  /* .empty-mesage {
     display: flex;
     height: calc(95vh - 10vh - 70px - 70px);
     text-align: center;
@@ -52,7 +52,7 @@ const BasketBodyStyled = styled.div`
     font-family: ${theme.fonts.family.stylish};
     font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.greyBlue};
-  }
+  } */
 
   &::-webkit-scrollbar {
     display: none;
