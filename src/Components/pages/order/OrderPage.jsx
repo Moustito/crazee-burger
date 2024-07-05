@@ -21,8 +21,12 @@ export default function OrderPage() {
   const { menu, handleAddProduct, handleDelete, handleEdit, resetMenu } =
     useMenu();
 
-  const { menuBasket, handleAddToBasket, handleDeleteToBasket } =
-    useBasket(menu);
+  const {
+    menuBasket,
+    handleAddToBasket,
+    handleDeleteToBasket,
+    handleEditToBasket,
+  } = useBasket(menu);
 
   const orderContextValue = {
     isModeAdmin,
@@ -44,6 +48,7 @@ export default function OrderPage() {
     handleAddToBasket,
     menuBasket,
     handleDeleteToBasket,
+    handleEditToBasket,
   };
 
   return (

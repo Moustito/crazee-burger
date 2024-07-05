@@ -2,7 +2,7 @@ import { useState } from "react";
 import { deepClone, filter, find, findIndex } from "../utils/array";
 import { fakeBasket } from "../fakeData/fakeBasket";
 
-export const useBasket = (menu) => {
+  export const useBasket = (menu) => {
   const [menuBasket, setMenuBasket] = useState([]);
 
   const handleAddToBasket = (idProductClicked) => {
@@ -52,9 +52,25 @@ export const useBasket = (menu) => {
     setMenuBasket(menuBasketUpdate);
   };
 
+  const handleEditToBasket = (productBeingEdited) => {
+    // Deep Clone
+    const basketCopy = deepClone(menuBasket);
+
+    // Manip sur le State
+    const indexOfProductToEdit = menuBasket.findIndex(
+      (basketProduct) => basketProduct.id === productBeingEdited.id
+    );
+
+    basketCopy[indexOfProductToEdit] = productBeingEdited;
+
+    // Update du State
+    setMenuBasket(basketCopy);
+  };
+
   return {
     menuBasket,
     handleAddToBasket,
     handleDeleteToBasket,
+    handleEditToBasket,
   };
 };
