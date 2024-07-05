@@ -5,6 +5,7 @@ import EmptyMenu from "./EmptyMenu";
 import OrderContext from "../../../../../../context/OrderContext";
 import { checkIfProductIsClicked } from "./helper";
 import { IMAGE_COMING_SOON } from "../../../../../../enums/product";
+import { isEmpty } from "../../../../../../utils/array.js";
 
 export default function Menu() {
   const {
@@ -41,7 +42,7 @@ export default function Menu() {
     titleEditRef.current.focus();
   };
 
-  if (menu.length === 0) {
+  if (isEmpty(menu)) {
     return (
       <MenuStyled>
         <EmptyMenu />

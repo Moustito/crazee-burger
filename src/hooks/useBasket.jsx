@@ -1,8 +1,13 @@
 import { useState } from "react";
-import { deepClone, filter, find, findIndex } from "../utils/array";
+import {
+  deepClone,
+  removeObjectById,
+  findObjectById,
+  findIndexById,
+} from "../utils/array";
 import { fakeBasket } from "../fakeData/fakeBasket";
 
-  export const useBasket = (menu) => {
+export const useBasket = (menu) => {
   const [menuBasket, setMenuBasket] = useState([]);
 
   const handleAddToBasket = (idProductClicked) => {
@@ -10,8 +15,8 @@ import { fakeBasket } from "../fakeData/fakeBasket";
     const menuCopy = deepClone(menu);
 
     const isProductAlreadyInBasket =
-      find(idProductClicked, basketCopy) !== undefined;
-    const productToAdd = find(idProductClicked, menuCopy);
+      findObjectById(idProductClicked, basketCopy) !== undefined;
+    const productToAdd = findObjectById(idProductClicked, menuCopy);
 
     //1er cas : Le produit n'est pas déjà dans le basket
     if (!isProductAlreadyInBasket) {
@@ -31,7 +36,10 @@ import { fakeBasket } from "../fakeData/fakeBasket";
     basketCopy,
     setMenuBasket
   ) => {
-    const indexOfProductToIncrement = findIndex(idProductClicked, basketCopy);
+    const indexOfProductToIncrement = findIndexById(
+      idProductClicked,
+      basketCopy
+    );
     basketCopy[indexOfProductToIncrement].quantity += 1;
     return setMenuBasket(basketCopy);
   };
@@ -47,7 +55,7 @@ import { fakeBasket } from "../fakeData/fakeBasket";
 
   const handleDeleteToBasket = (productId) => {
     const menuBasketCopy = deepClone(menuBasket);
-    const menuBasketUpdate = filter(productId, menuBasketCopy);
+    const menuBasketUpdate = removeObjectById(productId, menuBasketCopy);
 
     setMenuBasket(menuBasketUpdate);
   };
@@ -57,7 +65,7 @@ import { fakeBasket } from "../fakeData/fakeBasket";
     const basketCopy = deepClone(menuBasket);
 
     // Manip sur le State
-    const indexOfProductToEdit = menuBasket.findIndex(
+    const indexOfProductToEdit = menuBasket.findIndexById(
       (basketProduct) => basketProduct.id === productBeingEdited.id
     );
 

@@ -7,6 +7,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import BasketProducts from "./BasketProducts";
 import EmptyBasket from "./EmptyBasket";
+import { isEmpty } from "../../../../../utils/array";
 
 export default function Basket() {
   const { menuBasket } = useContext(OrderContext);
@@ -17,7 +18,7 @@ export default function Basket() {
       .reduce((total, product) => total + product.price * product.quantity, 0);
   };
 
-  const isBasketEmpty = menuBasket.length === 0;
+  const isBasketEmpty = isEmpty(menuBasket);
 
   return (
     <BasketStyled>
