@@ -36,6 +36,8 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
+  cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
+
   height: 86px;
   position: relative;
   overflow: hidden;
@@ -122,5 +124,8 @@ const BasketCardStyled = styled.div`
 `;
 
 const isselectedStyle = css`
-  background-color: green;
+  background-color: ${theme.colors.primary};
+  p {
+    color: ${theme.colors.white};
+  }
 `;
