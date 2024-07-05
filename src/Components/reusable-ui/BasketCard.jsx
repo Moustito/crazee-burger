@@ -9,7 +9,7 @@ export default function BasketCard({
   price,
   quantity,
   onDelete,
-  isModeAdmin,
+  isClickable,
   isselected,
   onClick,
 }) {
@@ -17,7 +17,7 @@ export default function BasketCard({
     <BasketCardStyled
       onClick={onClick}
       isselected={isselected}
-      isModeAdmin={isModeAdmin}
+      isClickable={isClickable}
     >
       {/* <ImagePreview imageSource={imageSource} title={title} /> */}
       <img src={imageSource} alt={title} />
@@ -36,7 +36,7 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
-  cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
+  cursor: ${({ isClickable }) => (isClickable ? "pointer" : "auto")};
 
   height: 86px;
   position: relative;
@@ -119,8 +119,8 @@ const BasketCardStyled = styled.div`
     display: none;
   }
 
-  ${({ isModeAdmin, isselected }) =>
-    isModeAdmin && isselected && isselectedStyle}
+  ${({ isClickable, isselected }) =>
+    isClickable && isselected && isselectedStyle}
 `;
 
 const isselectedStyle = css`

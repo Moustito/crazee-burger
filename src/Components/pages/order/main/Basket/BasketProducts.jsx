@@ -53,7 +53,7 @@ export default function BasketProducts() {
             quantity={quantity}
             onDelete={() => handleBasketCardDelete(id)}
             onClick={() => handleClick(id)}
-            isModeAdmin={isModeAdmin}
+            isClickable={isModeAdmin}
             isselected={checkIfProductIsClicked(id, productSelected.id)}
           />
         );
