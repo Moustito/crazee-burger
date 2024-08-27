@@ -3,13 +3,18 @@ import { theme } from "../../../../../theme";
 import Header from "../../../../reusable-ui/Header";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import { calculateSumToPay, formatPrice } from "../../../../../utils/maths";
+import { formatPrice } from "../../../../../utils/maths";
+import { findObjectById } from "../../../../../utils/array";
 
 export default function Total() {
   const { menuBasket, menu } = useContext(OrderContext);
 
-  const sumtToPay = calculateSumToPay(menuBasket, menu);
-  
+  const sumtToPay = menuBasket.reduce((total, BasketProduct) => {
+    const menuProduct = findObjectById(BasketProduct.id, menu);
+    total += menuProduct.price * BasketProduct.quantity;
+    return total;
+  }, 0);
+
   return (
     <Header>
       <TotalStyled>

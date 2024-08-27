@@ -1,5 +1,3 @@
-import { findObjectById } from "./array";
-
 export function formatPrice(priceToFormat) {
   let price = priceToFormat;
 
@@ -18,11 +16,3 @@ export function replaceFrenchCommaWithDot(price) {
   if (typeof price === "string") price = parseFloat(price.replace(",", "."));
   return price;
 }
-
-export const calculateSumToPay = (menuBasket, menu) => {
-  return menuBasket.reduce((total, BasketProduct) => {
-    const menuProduct = findObjectById(BasketProduct.id, menu);
-    total += menuProduct.price * BasketProduct.quantity;
-    return total;
-  }, 0);
-};

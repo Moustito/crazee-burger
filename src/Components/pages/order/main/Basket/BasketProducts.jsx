@@ -37,7 +37,6 @@ export default function BasketProducts() {
       (product) => product.id === idProductClicked
     );
     await setProductSelected(productClikedOn);
-    console.log(productClikedOn);
 
     titleEditRef.current.focus();
   };
