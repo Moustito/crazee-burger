@@ -10,47 +10,45 @@ import { fakeBasket } from "../fakeData/fakeBasket";
 export const useBasket = (menu) => {
   const [menuBasket, setMenuBasket] = useState([]);
 
-  const handleAddToBasket = (idProductClicked) => {
-    const basketCopy = deepClone(menuBasket);
-    const menuCopy = deepClone(menu);
+  const handleAddToBasket = (idProductToAdd) => {
+    const menuBasketCopy = deepClone(menuBasket);
+    const isProductAlreadyInBasket = findObjectById(
+      idProductToAdd,
+      menuBasketCopy
+    );
 
-    const isProductAlreadyInBasket =
-      findObjectById(idProductClicked, basketCopy) !== undefined;
-    const productToAdd = findObjectById(idProductClicked, menuCopy);
-
-    //1er cas : Le produit n'est pas déjà dans le basket
-    if (!isProductAlreadyInBasket) {
-      return addNewProductInBasket(productToAdd, basketCopy, setMenuBasket);
+    if (isProductAlreadyInBasket) {
+      return incrementProductAlreadyInBasket(
+        idProductToAdd,
+        menuBasketCopy,
+        setMenuBasket
+      );
     }
 
-    //2ème cas : le prosuit est déjà dans le basket
-    return incrementProductAlreadyInBasket(
-      idProductClicked,
-      basketCopy,
-      setMenuBasket
-    );
+    addNewBasketProduct(idProductToAdd, menuBasketCopy, setMenuBasket);
   };
 
   const incrementProductAlreadyInBasket = (
-    idProductClicked,
-    basketCopy,
+    idProductToAdd,
+    menuBasketCopy,
     setMenuBasket
   ) => {
     const indexOfProductToIncrement = findIndexById(
-      idProductClicked,
-      basketCopy
+      idProductToAdd,
+      menuBasketCopy
     );
-    basketCopy[indexOfProductToIncrement].quantity += 1;
-    return setMenuBasket(basketCopy);
+    menuBasketCopy[indexOfProductToIncrement].quantity += 1;
+    return setMenuBasket(menuBasketCopy);
   };
 
-  const addNewProductInBasket = (productToAdd, basketCopy, setMenuBasket) => {
-    const newBasketProduct = {
-      ...productToAdd,
-      quantity: 1,
-    };
-    const basketUpdated = [newBasketProduct, ...basketCopy];
-    return setMenuBasket(basketUpdated);
+  const addNewBasketProduct = (
+    idProductToAdd,
+    menuBasketCopy,
+    setMenuBasket
+  ) => {
+    const newBasketProduct = { id: idProductToAdd, quantity: 1 };
+    const newMenuBasket = [newBasketProduct, ...menuBasketCopy];
+    setMenuBasket(newMenuBasket);
   };
 
   const handleDeleteToBasket = (productId) => {

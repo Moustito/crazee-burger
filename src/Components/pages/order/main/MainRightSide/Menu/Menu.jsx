@@ -18,6 +18,7 @@ export default function Menu() {
     setCurrentTabSelected,
     titleEditRef,
     handleDeleteToBasket,
+    handleAddToBasket,
   } = useContext(OrderContext);
 
   const handleClick = async (idProductClicked) => {
@@ -42,6 +43,11 @@ export default function Menu() {
     titleEditRef.current.focus();
   };
 
+  const handleButtonClick = (event, idProductClicked) => {
+    event.stopPropagation();
+    handleAddToBasket(idProductClicked);
+  };
+
   if (isEmpty(menu)) {
     return (
       <MenuStyled>
@@ -63,6 +69,7 @@ export default function Menu() {
           onClick={() => handleClick(id)}
           ishoverable={isModeAdmin}
           isselected={checkIfProductIsClicked(id, productSelected.id)}
+          onAdd={(event) => handleButtonClick(event, id)}
         />
       ))}
     </MenuStyled>

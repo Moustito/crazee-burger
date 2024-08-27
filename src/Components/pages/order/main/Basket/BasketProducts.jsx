@@ -4,6 +4,7 @@ import OrderContext from "../../../../../context/OrderContext";
 import BasketCard from "../../../../reusable-ui/BasketCard";
 import { theme } from "../../../../../theme";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
+import { findObjectById } from "../../../../../utils/array";
 
 export default function BasketProducts() {
   const {
@@ -43,18 +44,25 @@ export default function BasketProducts() {
 
   return (
     <BasketProductsStyled>
-      {[...menuBasket].map(({ id, title, imageSource, price, quantity }) => {
+      {menuBasket.map((BasketProduct) => {
+        const menuProduct = findObjectById(BasketProduct.id, menu);
         return (
           <BasketCard
-            key={id}
-            title={title}
-            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
-            price={price}
-            quantity={quantity}
-            onDelete={() => handleBasketCardDelete(id)}
-            onClick={() => handleClick(id)}
+            {...menuProduct}
+            key={BasketProduct.id}
+            imageSource={
+              menuProduct.imageSource
+                ? menuProduct.imageSource
+                : IMAGE_COMING_SOON
+            }
+            quantity={BasketProduct.quantity}
+            onDelete={() => handleBasketCardDelete(BasketProduct.id)}
+            onClick={() => handleClick(BasketProduct.id)}
             isClickable={isModeAdmin}
-            isselected={checkIfProductIsClicked(id, productSelected.id)}
+            isselected={checkIfProductIsClicked(
+              BasketProduct.id,
+              productSelected.id
+            )}
           />
         );
       })}
