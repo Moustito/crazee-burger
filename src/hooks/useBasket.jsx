@@ -52,9 +52,7 @@ export const useBasket = (menu) => {
   };
 
   const handleDeleteToBasket = (productId) => {
-    const menuBasketCopy = deepClone(menuBasket);
-    const menuBasketUpdate = removeObjectById(productId, menuBasketCopy);
-
+    const menuBasketUpdate = removeObjectById(productId, menuBasket);
     setMenuBasket(menuBasketUpdate);
   };
 
