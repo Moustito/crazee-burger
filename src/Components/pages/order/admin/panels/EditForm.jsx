@@ -15,6 +15,7 @@ export default function EditForm() {
 
   // const inputTexts = getInputTextsConfig(productSelected);
 
+  // @TODO - insert replaceFrenchCommaWithDot in EditForm to prevent changing the number type to a string type with the ","
   const handleChange = (event) => {
     const { name, value } = event.target;
 
