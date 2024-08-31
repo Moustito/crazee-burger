@@ -15,15 +15,9 @@ export default function Card({
   onClick,
   ishoverable,
   isselected,
-  id,
+  onAdd,
 }) {
-  const { isModeAdmin, handleAddProduct, handleAddToBasket } =
-    useContext(OrderContext);
-
-  const handleButtonClick = (event, idProductClicked) => {
-    event.stopPropagation();
-    handleAddToBasket(idProductClicked);
-  };
+  const { isModeAdmin } = useContext(OrderContext);
 
   return (
     <CardStyled
@@ -42,7 +36,7 @@ export default function Card({
             <PrimaryButton
               label={"Ajouter"}
               className={"add-button"}
-              onClick={(event) => handleButtonClick(event, id)}
+              onClick={onAdd}
             />
           </div>
         </div>

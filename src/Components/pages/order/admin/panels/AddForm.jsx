@@ -5,6 +5,7 @@ import Form from "./Form";
 import PrimaryButton from "../../../../reusable-ui/PrimaryButton";
 import SubmitMessage from "./SubmitMessage";
 import { useSuccessMessage } from "../../../../../hooks/useSuccessMessage";
+import { replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 
 export default function AddForm() {
   const { handleAddProduct, newProduct, setNewProduct } =
@@ -17,6 +18,7 @@ export default function AddForm() {
     const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(),
+      price: replaceFrenchCommaWithDot (newProduct.price),
     };
 
     handleAddProduct(newProductToAdd);

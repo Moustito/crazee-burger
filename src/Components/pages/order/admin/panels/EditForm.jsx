@@ -5,10 +5,17 @@ import EditMessage from "./EditMessage";
 import Form from "./Form";
 
 export default function EditForm() {
-  const { productSelected, setProductSelected, handleEdit, titleEditRef } =
-    useContext(OrderContext);
-  const inputTexts = getInputTextsConfig(productSelected);
+  const {
+    productSelected,
+    setProductSelected,
+    handleEdit,
+    titleEditRef,
+    handleEditToBasket,
+  } = useContext(OrderContext);
 
+  // const inputTexts = getInputTextsConfig(productSelected);
+
+  // @TODO - insert replaceFrenchCommaWithDot in EditForm to prevent changing the number type to a string type with the ","
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -19,6 +26,7 @@ export default function EditForm() {
 
     setProductSelected(productBeingUpdated);
     handleEdit(productBeingUpdated);
+    handleEditToBasket(productBeingUpdated);
   };
 
   return (

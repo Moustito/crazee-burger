@@ -9,9 +9,16 @@ export default function BasketCard({
   price,
   quantity,
   onDelete,
+  isClickable,
+  isselected,
+  onClick,
 }) {
   return (
-    <BasketCardStyled>
+    <BasketCardStyled
+      onClick={onClick}
+      isselected={isselected}
+      isClickable={isClickable}
+    >
       {/* <ImagePreview imageSource={imageSource} title={title} /> */}
       <img src={imageSource} alt={title} />
       <div className="text-content">
@@ -29,6 +36,8 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
+  cursor: ${({ isClickable }) => (isClickable ? "pointer" : "auto")};
+
   height: 86px;
   position: relative;
   overflow: hidden;
@@ -108,5 +117,15 @@ const BasketCardStyled = styled.div`
   }
   .button-delete {
     display: none;
+  }
+
+  ${({ isClickable, isselected }) =>
+    isClickable && isselected && isselectedStyle}
+`;
+
+const isselectedStyle = css`
+  background-color: ${theme.colors.primary};
+  p {
+    color: ${theme.colors.white};
   }
 `;

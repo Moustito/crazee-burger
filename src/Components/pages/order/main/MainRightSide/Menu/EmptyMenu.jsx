@@ -5,7 +5,7 @@ import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
 import { fakeMenu } from "../../../../../../fakeData/fakeMenu";
 
 export default function NoProducts() {
-  const { isModeAdmin, setMenu, resetMenu } = useContext(OrderContext);
+  const { isModeAdmin, resetMenu } = useContext(OrderContext);
 
   if (isModeAdmin) {
     return (

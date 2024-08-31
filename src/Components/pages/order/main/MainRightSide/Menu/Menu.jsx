@@ -5,6 +5,7 @@ import EmptyMenu from "./EmptyMenu";
 import OrderContext from "../../../../../../context/OrderContext";
 import { checkIfProductIsClicked } from "./helper";
 import { IMAGE_COMING_SOON } from "../../../../../../enums/product";
+import { isEmpty } from "../../../../../../utils/array.js";
 
 export default function Menu() {
   const {
@@ -17,6 +18,7 @@ export default function Menu() {
     setCurrentTabSelected,
     titleEditRef,
     handleDeleteToBasket,
+    handleAddToBasket,
   } = useContext(OrderContext);
 
   const handleClick = async (idProductClicked) => {
@@ -41,7 +43,12 @@ export default function Menu() {
     titleEditRef.current.focus();
   };
 
-  if (menu.length === 0) {
+  const handleButtonClick = (event, idProductClicked) => {
+    event.stopPropagation();
+    handleAddToBasket(idProductClicked);
+  };
+
+  if (isEmpty(menu)) {
     return (
       <MenuStyled>
         <EmptyMenu />
@@ -62,6 +69,7 @@ export default function Menu() {
           onClick={() => handleClick(id)}
           ishoverable={isModeAdmin}
           isselected={checkIfProductIsClicked(id, productSelected.id)}
+          onAdd={(event) => handleButtonClick(event, id)}
         />
       ))}
     </MenuStyled>
